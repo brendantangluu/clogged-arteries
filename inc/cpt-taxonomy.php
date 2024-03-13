@@ -48,6 +48,8 @@ function cla_register_custom_post_types()
         'menu_position'         => 5,
         'menu_icon'             => 'dashicons-food',
         'supports'              => array('title', 'editor', 'thumbnail'),
+        'taxonomies'            => array('cla-menu-categories', 'cla-location'),
+
     );
 
     register_post_type('cla-menu', $args);
@@ -101,6 +103,114 @@ function cla_register_custom_post_types()
 
     // Register the Restaurants post type
     register_post_type('cla-restaurant', $restaurant_args);
+
+    // Labels for the Custom Post Type: 'Careers'
+    $career_labels = array(
+        'name'                  => _x('Careers', 'Post Type General Name', 'text-domain'),
+        'singular_name'         => _x('Career', 'Post Type Singular Name', 'text-domain'),
+        'menu_name'             => __('Careers', 'text-domain'),
+        'name_admin_bar'        => __('Career', 'text-domain'),
+        'add_new'               => __('Add New', 'text-domain'),
+        'add_new_item'          => __('Add New Career Position', 'text-domain'),
+        'edit_item'             => __('Edit Career Position', 'text-domain'),
+        'new_item'              => __('New Career Position', 'text-domain'),
+        'all_items'             => __('All Career Positions', 'text-domain'),
+        'view_item'             => __('View Career Position', 'text-domain'),
+        'search_items'          => __('Search Career Positions', 'text-domain'),
+        'not_found'             => __('No career positions found', 'text-domain'),
+        'not_found_in_trash'    => __('No career positions found in Trash', 'text-domain'),
+        'parent_item_colon'     => __('Parent Career Position:', 'text-domain'),
+        'all_items'             => __('All Careers', 'text-domain'),
+        'archives'              => __('Career Archives', 'text-domain'),
+        'attributes'            => __('Career Attributes', 'text-domain'),
+        'insert_into_item'      => __('Insert into career', 'text-domain'),
+        'uploaded_to_this_item' => __('Uploaded to this career', 'text-domain'),
+        'featured_image'        => __('Career featured image', 'text-domain'),
+        'set_featured_image'    => __('Set career featured image', 'text-domain'),
+        'remove_featured_image' => __('Remove career featured image', 'text-domain'),
+        'use_featured_image'    => __('Use as career featured image', 'text-domain'),
+    );
+
+    // Arguments for the Careers CPT
+    $career_args = array(
+        'labels'             => $career_labels,
+        'public'             => true,
+        'publicly_queryable' => true,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'show_in_nav_menus'  => true,
+        'show_in_admin_bar'  => true,
+        'show_in_rest'       => true,
+        'query_var'          => true,
+        'rewrite'            => array('slug' => 'careers'),
+        'capability_type'    => 'post',
+        'has_archive'        => true,
+        'hierarchical'       => false,
+        'menu_position'      => null,
+        'menu_icon'          => 'dashicons-businessman',
+        'supports'           => array('title', 'thumbnail'),
+        'taxonomies'         => array('cla-location'),
+    );
+
+    // Register the Careers post type
+    register_post_type('cla-careers', $career_args);
 }
 
 add_action('init', 'cla_register_custom_post_types');
+
+function cla_register_custom_taxonomies()
+{
+    // Taxonomy for the 'Locations' CPT
+    $location_tax_labels = array(
+        'name'              => _x('Locations', 'taxonomy general name', 'text-domain'),
+        'singular_name'     => _x('Location', 'taxonomy singular name', 'text-domain'),
+        'search_items'      => __('Search Locations', 'text-domain'),
+        'all_items'         => __('All Locations', 'text-domain'),
+        'parent_item'       => __('Parent Location', 'text-domain'),
+        'parent_item_colon' => __('Parent Location:', 'text-domain'),
+        'edit_item'         => __('Edit Location', 'text-domain'),
+        'update_item'       => __('Update Location', 'text-domain'),
+        'add_new_item'      => __('Add New Location', 'text-domain'),
+        'new_item_name'     => __('New Location Name', 'text-domain'),
+        'menu_name'         => __('Locations', 'text-domain'),
+    );
+
+    $location_tax_args = array(
+        'hierarchical'      => true, // True means it's like categories, false means it's like tags.
+        'labels'            => $location_tax_labels,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array('slug' => 'location-types'),
+    );
+
+    register_taxonomy('cla-location', array('cla-menu', 'cla-careers'), $location_tax_args);
+
+    // Taxonomy for the 'Menu Categories' CPT
+    $menu_category_labels = array(
+        'name'              => _x('Menu Categories', 'taxonomy general name', 'text-domain'),
+        'singular_name'     => _x('Menu Category', 'taxonomy singular name', 'text-domain'),
+        'search_items'      => __('Search Menu Categories', 'text-domain'),
+        'all_items'         => __('All Menu Categories', 'text-domain'),
+        'parent_item'       => __('Parent Menu Category', 'text-domain'),
+        'parent_item_colon' => __('Parent Menu Category:', 'text-domain'),
+        'edit_item'         => __('Edit Menu Category', 'text-domain'),
+        'update_item'       => __('Update Menu Category', 'text-domain'),
+        'add_new_item'      => __('Add New Menu Category', 'text-domain'),
+        'new_item_name'     => __('New Menu Category Name', 'text-domain'),
+        'menu_name'         => __('Menu Category', 'text-domain'),
+    );
+
+    $menu_category_args = array(
+        'hierarchical'      => true,
+        'labels'            => $menu_category_labels,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array('slug' => 'menu-categories'),
+    );
+
+    register_taxonomy('cla-menu-categories', array('cla-menu'), $menu_category_args);
+}
+
+add_action('init', 'cla_register_custom_taxonomies');
