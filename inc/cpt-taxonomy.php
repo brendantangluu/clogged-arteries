@@ -49,6 +49,11 @@ function cla_register_custom_post_types()
         'menu_icon'             => 'dashicons-food',
         'supports'              => array('title', 'editor', 'thumbnail'),
         'taxonomies'            => array('cla-menu-categories', 'cla-location'),
+<<<<<<< Updated upstream
+=======
+        'template'           => array( array( 'core/quote' ) ),
+        'template_lock'      => 'all'
+>>>>>>> Stashed changes
 
     );
 
@@ -99,6 +104,11 @@ function cla_register_custom_post_types()
         'menu_position'      => 6,
         'menu_icon'          => 'dashicons-store',
         'supports'           => array('title'),
+<<<<<<< Updated upstream
+=======
+        'template'           => array( array( 'core/quote' ) ),
+        'template_lock'      => 'all'
+>>>>>>> Stashed changes
     );
 
     // Register the Restaurants post type
@@ -121,7 +131,10 @@ function cla_register_custom_post_types()
         'not_found_in_trash'    => __('No career positions found in Trash', 'text-domain'),
         'parent_item_colon'     => __('Parent Career Position:', 'text-domain'),
         'all_items'             => __('All Careers', 'text-domain'),
+<<<<<<< Updated upstream
         'archives'              => __('Career Archives', 'text-domain'),
+=======
+>>>>>>> Stashed changes
         'attributes'            => __('Career Attributes', 'text-domain'),
         'insert_into_item'      => __('Insert into career', 'text-domain'),
         'uploaded_to_this_item' => __('Uploaded to this career', 'text-domain'),
@@ -144,12 +157,21 @@ function cla_register_custom_post_types()
         'query_var'          => true,
         'rewrite'            => array('slug' => 'careers'),
         'capability_type'    => 'post',
+<<<<<<< Updated upstream
         'has_archive'        => true,
+=======
+        'has_archive'        => false,
+>>>>>>> Stashed changes
         'hierarchical'       => true,
         'menu_position'      => null,
         'menu_icon'          => 'dashicons-businessman',
         'supports'           => array('title', 'thumbnail'),
         'taxonomies'         => array('cla-location'),
+<<<<<<< Updated upstream
+=======
+        'template'           => array( array( 'core/quote' ) ),
+        'template_lock'      => 'all'
+>>>>>>> Stashed changes
     );
 
     // Register the Careers post type
@@ -182,6 +204,11 @@ function cla_register_custom_taxonomies()
         'show_admin_column' => true,
         'query_var'         => true,
         'rewrite'           => array('slug' => 'location-types'),
+<<<<<<< Updated upstream
+=======
+        'template'           => array( array( 'core/quote' ) ),
+        'template_lock'      => 'all'
+>>>>>>> Stashed changes
     );
 
     register_taxonomy('cla-location', array('cla-menu', 'cla-careers'), $location_tax_args);
@@ -208,6 +235,11 @@ function cla_register_custom_taxonomies()
         'show_admin_column' => true,
         'query_var'         => true,
         'rewrite'           => array('slug' => 'menu-categories'),
+<<<<<<< Updated upstream
+=======
+        'template'           => array( array( 'core/quote' ) ),
+        'template_lock'      => 'all'
+>>>>>>> Stashed changes
     );
 
     register_taxonomy('cla-menu-categories', array('cla-menu'), $menu_category_args);
