@@ -1,4 +1,9 @@
 <?php
+
+if(isset($_GET['restaurants'])){
+	$_SESSION['restaurants'] = $_GET['restaurants'];
+}
+
 /**
  * The header for our theme
  *
