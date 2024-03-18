@@ -1,4 +1,5 @@
 <?php
+session_start();
 /**
  * The template for displaying all pages
  *
@@ -27,7 +28,7 @@ get_header();
 				endif;
 			endif;
 			?>
-				<form action="<?php echo get_permalink('86')?>">
+				<form action="<?php echo get_permalink('86')?>" method = "get">
 					<?php
 						$args = array(
 							'post_type'			=> 'cla-restaurant',
@@ -53,8 +54,14 @@ get_header();
 								wp_reset_postdata();
 							endif;
 					?>
-					<input type="submit" value = "Submit">
+					<input type="submit" name = "submit" value = "Submit">
 				</form>
+				<?php 
+					if(isset ($_GET['submit'])){
+						$_SESSION['restaurants'] = $_GET['restaurants'];
+					}
+					
+					?>
 			<?php
 		?>
 
