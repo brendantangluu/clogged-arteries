@@ -185,3 +185,11 @@ if (defined('JETPACK__VERSION')) {
  * Custom Post Types & Taxonomies
  */
 require get_template_directory() . '/inc/cpt-taxonomy.php';
+
+// Start session
+add_action('init', 'start_session');
+function start_session(){
+	if(!session_id()){
+		session_start();
+	}
+}
