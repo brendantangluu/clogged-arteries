@@ -27,17 +27,15 @@ if ($query->have_posts()) :
         echo '<h2>';
         the_title();
         echo '</h2>';
-
-       
         if (function_exists('get_field')) :
             
 			// Pinpoint Image
-            if (get_field('pinpoint_image')) :
-                $pinpoint_image = get_field('pinpoint_image');
-                $pinpoint_image_url = $pinpoint_image['url'];
-                $pinpoint_image_alt = $pinpoint_image['alt'];
-                echo '<img src="' . esc_url($pinpoint_image_url) . '" alt="' . esc_attr($pinpoint_image_alt) . '">';
-            endif;
+            // if (get_field('pinpoint_image')) :
+            //     $pinpoint_image = get_field('pinpoint_image');
+            //     $pinpoint_image_url = $pinpoint_image['url'];
+            //     $pinpoint_image_alt = $pinpoint_image['alt'];
+            //     echo '<img src="' . esc_url($pinpoint_image_url) . '" alt="' . esc_attr($pinpoint_image_alt) . '">';
+            // endif;
 
             // Address
             if (get_field('address')) :
@@ -59,6 +57,23 @@ if ($query->have_posts()) :
                 the_field('hours');
                 echo '</p>';
             endif;
+
+			// Google Map Field
+			?>
+			<div class = 'acf-map'>
+				<?php
+				if (get_field('map')) :
+					$map = get_field('map')
+					?>
+						<div class = "marker" data-lat="<?php echo $map['lat']?>" data-lng="<?php echo $map['lng']?>">
+
+						</div>
+					
+					<?php
+				endif;
+				?>
+			</div>
+			<?php
 		endif;
     endwhile;
     wp_reset_postdata();
