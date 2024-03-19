@@ -30,15 +30,35 @@ get_header();
 				$query -> the_post();
 				echo '<article>';
 				echo '<h2>' . get_the_title() . '</h2>';
-				$food_image = get_field('food_image');
-				if ($food_image):
-					echo '<img src="'. esc_url($food_image['url']) .'" alt="'. esc_attr(get_the_title()) .'">';
-				endif;
 				if ( function_exists( 'get_field' ) ):
-					if ( get_field( 'food_description' ) ):
-						echo '<p>'. get_field('food_description') .'</p>';
+					if ( get_field( 'food_price' ) ):
+						echo '<p>' . get_field( 'food_price' ). '</p>';
 					endif;
-				endif;
+
+					$food_sizes = get_field( 'food_size' );
+					
+						if ( $food_sizes ):
+							echo '<p>';
+							if ( $food_sizes[ 'size_small' ] && $food_sizes[ 'size_medium' ] && $food_sizes[ 'size_large' ] ):
+								echo $food_sizes[ 'size_small' ];
+								echo '<span>|</span>';
+								echo $food_sizes[ 'size_medium' ];
+								echo '<span>|</span>';
+								echo $food_sizes[ 'size_large' ];
+							endif;
+							echo '</p>';
+						endif;
+
+					$food_image = get_field( 'food_image' );
+					if ( $food_image ):
+						echo '<img src="'. esc_url( $food_image[ 'url' ] ) .'" alt="'. esc_attr( get_the_title() ) .'">';
+					endif;
+					
+					if ( get_field( 'food_description' ) ):
+						echo '<p>'. get_field( 'food_description' ) .'</p>';
+					endif;
+					
+				endif;	
 				echo '</article>';
 			endwhile;
 			wp_reset_postdata();
