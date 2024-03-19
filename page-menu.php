@@ -16,20 +16,35 @@ get_header();
 ?>
 
 	<main id="primary" class="site-main">
-
+		
 		<?php
-		while ( have_posts() ) :
-			the_post();
+		$args = array(
+			'post_type'			=> 'cla-menu',
+			'posts_per_page'	=> -1,
+			'order'				=> 'ASC',
+			'orderby'			=> 'title'
+		);
+		$query = new WP_Query( $args );
+		if ( $query -> have_posts() ):
+			while ( $query -> have_posts() ):
+				$query -> the_post();
+				echo '<article>';
+				echo '<h2>' . get_the_title() . '</h2>';
+				$food_image = get_field('food_image');
+				if ($food_image):
+					echo '<img src="'. esc_url($food_image['url']) .'" alt="'. esc_attr(get_the_title()) .'">';
+				endif;
+				if ( function_exists( 'get_field' ) ):
+					if ( get_field( 'food_description' ) ):
+						echo '<p>'. get_field('food_description') .'</p>';
+					endif;
+				endif;
+				echo '</article>';
+			endwhile;
+			wp_reset_postdata();
+		endif;
 
-			get_template_part( 'template-parts/content', 'page' );
-
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
-
-		endwhile; // End of the loop.
-		?>
+		?>	
 
 	</main><!-- #main -->
 
