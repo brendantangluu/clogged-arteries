@@ -24,7 +24,7 @@ get_header();
 
 		get_template_part('template-parts/content', 'page');
 
-		// a loop outputting all the job listings that are created in the backend (Careers CPT Items)
+
 		$args = array(
 			'post_type' => 'cla-careers',
 			'posts_per_page' => -1,
@@ -32,13 +32,36 @@ get_header();
 			'order' => 'ASC',
 		);
 		$careers = new WP_Query($args);
+
+		if (taxonomy_exists('cla-location')) {
+			$locations = get_terms(array(
+				'taxonomy' => 'cla-location',
+				'hide_empty' => false,
+			));
+			if (!empty($locations)) {
+				echo '<div class="filter-tabs">';
+				foreach ($locations as $location) {
+					echo '<button class="tab" data-location="' . esc_attr($location->slug) . '">' . esc_html($location->name) . '</button>';
+				}
+				echo '</div>';
+			}
+		}
+
 		if ($careers->have_posts()) {
 			while ($careers->have_posts()) {
 				$careers->the_post();
+				$location_terms = get_the_terms(get_the_ID(), 'cla-location');
+				if ($location_terms && !is_wp_error($location_terms)) {
+					$location_slugs = wp_list_pluck($location_terms, 'slug');
+					$data_location = esc_attr(implode(' ', $location_slugs));
+				} else {
+					$data_location = 'no-location';
+				}
 	?>
-				<div class="careers">
+				<div class="careers" data-location="<?php echo $data_location; ?>">
 					<h2><?php the_title(); ?></h2>
 					<p><?php the_field('role_description'); ?></p>
+					<a href="https://ca.indeed.com/q-restaurant-jobs.html?vjk=152b9f5a426d28cb" target="_blank" rel="noopener">Click here to Apply</a>
 				</div>
 	<?php
 			}
