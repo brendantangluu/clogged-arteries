@@ -103,7 +103,7 @@ get_header();
 	<!-- Exclusive Section END -->
 		<section class="instagram-gallery">
 			<article>
-
+				 <?php echo do_shortcode('[instagram-feed feed=1]'); ?> 
 			</article>
 			<article class="slider">
 
