@@ -1,6 +1,5 @@
 <?php
-
-
+session_start();
 /**
  * The template for displaying all pages
  *
@@ -17,23 +16,46 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+<main id="primary" class="site-main">
 
-		<?php
+    <?php
+    if (function_exists('get_field')):
+        if (get_field('logo') || get_field('prompt')): ?>
+            <img class="splash-logo" src="<?php the_field('logo') ?>" alt="This is the Clogged Arteries Logo">
+            <p><?php the_field('prompt') ?></p>
+        <?php endif;
+    endif; ?>
 
-		while ( have_posts() ) :
-			the_post();
+		<form action="<?php echo get_permalink('86')?>" method="get">
+			<?php
+			$args = array(
+				'post_type'         => 'cla-restaurant',
+				'posts_per_page'    => -1,
+				'order'             => 'DESC',
+				'orderby'           => 'title'
+			);
 
-			get_template_part( 'template-parts/content', 'page' );
-			
+			$query = new WP_Query($args);
+			if ($query->have_posts()) :
+				while ($query->have_posts()) :
+					$query->the_post();
+					$post_slug = $post->post_name;
+					?>
+					<fieldset>
+						<input type="radio" name="restaurants" value="<?php echo $post_slug ?>" id="<?php the_title() ?>">
+						<label for="<?php the_title() ?>"><?php the_title() ?></label>
+					</fieldset>
+				<?php
+				endwhile;
+				wp_reset_postdata();
+			endif;
+			?>
+			<input type="submit" value="Submit">
+		</form>
+    <?php
+    ?>
 
-			if(isset($_SESSION['restaurants'])){
-				echo $_SESSION['restaurants'];
-			}
-		endwhile; // End of the loop.
-		?>
-
-	</main><!-- #main -->
+</main><!-- #main -->
 
 <?php
 get_footer();
