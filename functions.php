@@ -187,9 +187,25 @@ if (defined('JETPACK__VERSION')) {
 require get_template_directory() . '/inc/cpt-taxonomy.php';
 
 // Start session
-add_action('init', 'start_session');
-function start_session(){
-	if(!session_id()){
+function start_session()
+{
+	if (!session_id()) {
 		session_start();
 	}
 }
+add_action('init', 'start_session');
+
+/**
+ * Enqueue external scripts and styles.
+ */
+function external_scripts()
+{
+	wp_enqueue_script(
+		'careers-script',
+		get_template_directory_uri() . '/js/career-tabs.js',
+		array('jquery'),
+		'1.0',
+		true
+	);
+}
+add_action('wp_enqueue_scripts', 'external_scripts');
