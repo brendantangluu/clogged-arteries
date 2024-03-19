@@ -33,9 +33,10 @@ if ($query->have_posts()) :
             
 			// Pinpoint Image
             if (get_field('pinpoint_image')) :
-                echo '<p>';
-                the_field('pinpoint_image');
-                echo '</p>';
+                $pinpoint_image = get_field('pinpoint_image');
+                $pinpoint_image_url = $pinpoint_image['url'];
+                $pinpoint_image_alt = $pinpoint_image['alt'];
+                echo '<img src="' . esc_url($pinpoint_image_url) . '" alt="' . esc_attr($pinpoint_image_alt) . '">';
             endif;
 
             // Address
@@ -57,7 +58,7 @@ if ($query->have_posts()) :
                 echo '<p>';
                 the_field('hours');
                 echo '</p>';
-            endif;        
+            endif;
 		endif;
     endwhile;
     wp_reset_postdata();
