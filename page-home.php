@@ -22,8 +22,10 @@ get_header();
     <?php
     if (function_exists("get_field")):
         ?>
-        <h1><?php the_field('company_name') ?></h1>
-        <p><?php the_field('tagline') ?></p>
+		<section class="hero-section">
+			<h1><?php the_field('company_name') ?></h1>
+			<p><?php the_field('tagline') ?></p>
+		</section>
         <?php
 
         // Check if $_SESSION['restaurants'] is set and not empty
@@ -35,7 +37,7 @@ get_header();
                 $restaurant_data[] = $restaurant->post_name;
             }
             if(in_array($_SESSION['restaurants'], $restaurant_data)){
-                echo "<section>";
+                echo "<section class='location-exclusives'>";
 					$menu_category_slug = 'exclusive'; 	
                     $taxonomy = 'cla-menu-categories';
                     $post_type = 'cla-menu';
@@ -68,11 +70,13 @@ get_header();
                             if($query -> have_posts()){
                                 while ($query->have_posts()) {
                                     $query->the_post();
-									?> 
+									?>
+									<article>
 										<img src="<?php the_field('food_image') ?>" alt="">
 										<h2><?php the_title(); ?></h2>
 										<p><?php the_field('food_description') ?></p>
 										<aside><?php the_field('food_price')?></aside>
+									</article> 
 									<?php
 
                                 }
