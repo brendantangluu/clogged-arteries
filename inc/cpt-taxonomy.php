@@ -99,7 +99,7 @@ function cla_register_custom_post_types()
         'hierarchical'       => true,
         'menu_position'      => 6,
         'menu_icon'          => 'dashicons-store',
-        'supports'           => array('title'),
+        'supports'           => array('title', 'thumbnail'),
     );
 
     // Register the Restaurants post type
