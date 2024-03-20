@@ -27,14 +27,14 @@ get_header();
 	);
 
 	if (taxonomy_exists('cla-menu-categories')) :
-		$items = get_terms(array(
+		$menuCategories = get_terms(array(
 			'taxonomy'		=> 'cla-menu-categories',
 			'order'			=> 'ASC',
 			'orderby'		=> 'ID'
 		));
-		if (!empty($items)) :
-			foreach ($items as $item) :
-				echo '<button class="tab" data-menu-category="' . esc_attr($item->slug) . '">' . esc_html($item->name) . '</button>';
+		if (!empty($menuCategories)) :
+			foreach ($menuCategories as $menuCategory) :
+				echo '<button class="tab" data-menu-category="' . esc_attr($menuCategory->slug) . '">' . esc_html($menuCategory->name) . '</button>';
 			endforeach;
 		endif;
 	endif;
@@ -52,72 +52,73 @@ get_header();
 				$data_menu_category = 'no-menu';
 			}
 
-			echo '<article class="cla-menu tab-class" data-menu-category="' . $data_menu_category . '">';
-			$location = ucwords(str_replace('-', ' ', $_SESSION['restaurants']));
-
-			if (has_term('exclusive', 'cla-menu-categories') && strpos(get_the_title(), $location) === 0) {
-				echo '<h2>' . get_the_title() . '</h2>';
-				if (function_exists('get_field')) :
-					if (get_field('food_price')) :
-						echo '<p>' . get_field('food_price') . '</p>';
-					endif;
-
-					$food_sizes = get_field('food_size');
-
-					if ($food_sizes) :
-						echo '<p>';
-						if ($food_sizes['size_small'] && $food_sizes['size_medium'] && $food_sizes['size_large']) :
-							echo $food_sizes['size_small'];
-							echo '<span>|</span>';
-							echo $food_sizes['size_medium'];
-							echo '<span>|</span>';
-							echo $food_sizes['size_large'];
+			echo '<article class="cla-menu" data-menu-category="' . $data_menu_category . '">';
+			if (isset($_SESSION['restaurants'])) :
+				$location = ucwords(str_replace('-', ' ', $_SESSION['restaurants']));
+				if (has_term('exclusive', 'cla-menu-categories') && strpos(get_the_title(), $location) === 0) {
+					echo '<h2>' . get_the_title() . '</h2>';
+					if (function_exists('get_field')) :
+						if (get_field('food_price')) :
+							echo '<p>' . get_field('food_price') . '</p>';
 						endif;
-						echo '</p>';
-					endif;
 
-					$food_image = get_field('food_image');
-					if ($food_image) :
-						echo '<img src="' . esc_url($food_image['url']) . '" alt="' . esc_attr(get_the_title()) . '">';
-					endif;
+						$food_sizes = get_field('food_size');
 
-					if (get_field('food_description')) :
-						echo '<p>' . get_field('food_description') . '</p>';
-					endif;
-
-				endif;
-			} else if (!has_term('exclusive', 'cla-menu-categories')) {
-				echo '<h2>' . get_the_title() . '</h2>';
-				if (function_exists('get_field')) :
-					if (get_field('food_price')) :
-						echo '<p>' . get_field('food_price') . '</p>';
-					endif;
-
-					$food_sizes = get_field('food_size');
-
-					if ($food_sizes) :
-						echo '<p>';
-						if ($food_sizes['size_small'] && $food_sizes['size_medium'] && $food_sizes['size_large']) :
-							echo $food_sizes['size_small'];
-							echo '<span>|</span>';
-							echo $food_sizes['size_medium'];
-							echo '<span>|</span>';
-							echo $food_sizes['size_large'];
+						if ($food_sizes) :
+							echo '<p>';
+							if ($food_sizes['size_small'] && $food_sizes['size_medium'] && $food_sizes['size_large']) :
+								echo $food_sizes['size_small'];
+								echo '<span>|</span>';
+								echo $food_sizes['size_medium'];
+								echo '<span>|</span>';
+								echo $food_sizes['size_large'];
+							endif;
+							echo '</p>';
 						endif;
-						echo '</p>';
-					endif;
 
-					$food_image = get_field('food_image');
-					if ($food_image) :
-						echo '<img src="' . esc_url($food_image['url']) . '" alt="' . esc_attr(get_the_title()) . '">';
-					endif;
+						$food_image = get_field('food_image');
+						if ($food_image) :
+							echo '<img src="' . esc_url($food_image['url']) . '" alt="' . esc_attr(get_the_title()) . '">';
+						endif;
 
-					if (get_field('food_description')) :
-						echo '<p>' . get_field('food_description') . '</p>';
-					endif;
+						if (get_field('food_description')) :
+							echo '<p>' . get_field('food_description') . '</p>';
+						endif;
 
-				endif;
-			}
+					endif;
+				} else if (!has_term('exclusive', 'cla-menu-categories')) {
+					echo '<h2>' . get_the_title() . '</h2>';
+					if (function_exists('get_field')) :
+						if (get_field('food_price')) :
+							echo '<p>' . get_field('food_price') . '</p>';
+						endif;
+
+						$food_sizes = get_field('food_size');
+
+						if ($food_sizes) :
+							echo '<p>';
+							if ($food_sizes['size_small'] && $food_sizes['size_medium'] && $food_sizes['size_large']) :
+								echo $food_sizes['size_small'];
+								echo '<span>|</span>';
+								echo $food_sizes['size_medium'];
+								echo '<span>|</span>';
+								echo $food_sizes['size_large'];
+							endif;
+							echo '</p>';
+						endif;
+
+						$food_image = get_field('food_image');
+						if ($food_image) :
+							echo '<img src="' . esc_url($food_image['url']) . '" alt="' . esc_attr(get_the_title()) . '">';
+						endif;
+
+						if (get_field('food_description')) :
+							echo '<p>' . get_field('food_description') . '</p>';
+						endif;
+
+					endif;
+				}
+			endif;
 			echo '</article>';
 		endwhile;
 		wp_reset_postdata();
