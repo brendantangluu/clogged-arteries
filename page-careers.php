@@ -31,7 +31,6 @@ get_header();
 			'orderby' => 'date',
 			'order' => 'ASC',
 		);
-		$careers = new WP_Query($args);
 
 		if (taxonomy_exists('cla-location')) {
 			$locations = get_terms(array(
@@ -47,6 +46,7 @@ get_header();
 			}
 		}
 
+		$careers = new WP_Query($args);
 		if ($careers->have_posts()) {
 			while ($careers->have_posts()) {
 				$careers->the_post();
