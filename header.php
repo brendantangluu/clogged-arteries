@@ -1,5 +1,9 @@
 <?php
 
+if(isset($_GET['restaurants'])):
+	$_SESSION['restaurants'] = $_GET['restaurants'];
+endif;
+
 /**
  * The header for our theme
  *
@@ -63,9 +67,6 @@
 						<input type="submit" value="Submit">
 					</form>
 				<?php
-				if(isset($_GET['restaurants'])):
-					$_SESSION['restaurants'] = $_GET['restaurants'];
-				endif;
 			endif;
 		?>
 		<!-- Location Switcher -->

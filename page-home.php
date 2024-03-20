@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 /**
  * The template for displaying all pages
@@ -20,8 +19,8 @@ get_header();
 <main id="primary" class="site-main">
 		<section class="hero-section">
 				<?php
-				if (function_exists("get_field")) :
-					if(get_field('company_name' AND get_field('tagline'))):
+				if (function_exists("get_field") AND isset($_SESSION['restaurants'])) :
+					if(get_field("company_name") OR get_field("tagline")):
 						?>
 							<h1><?php the_field('company_name') ?></h1>
 							<p><?php the_field('tagline') ?></p>
