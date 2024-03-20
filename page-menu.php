@@ -19,11 +19,25 @@ get_header();
 		
 		<?php
 		$args = array(
-			'post_type'			=> 'cla-menu',
+			'post_type' 		=> 'cla-menu',
 			'posts_per_page'	=> -1,
 			'order'				=> 'ASC',
 			'orderby'			=> 'title'
 		);
+
+		if ( taxonomy_exists( 'cla-menu-categories' ) ):
+			$menuCategories = get_terms( array(
+				'taxonomy'		=> 'cla-menu-categories',
+				'order'			=> 'ASC',
+				'orderby'		=> 'ID'
+			) );
+			if ( !empty( $menuCategories ) ):
+				foreach ( $menuCategories as $menuCategory ):
+					echo '<button>'. ( $menuCategory -> name ) .'</button>';
+				endforeach;
+			endif;
+		endif;
+
 		$query = new WP_Query( $args );
 		if ( $query -> have_posts() ):
 			while ( $query -> have_posts() ):
@@ -37,17 +51,17 @@ get_header();
 
 					$food_sizes = get_field( 'food_size' );
 					
-						if ( $food_sizes ):
-							echo '<p>';
-							if ( $food_sizes[ 'size_small' ] && $food_sizes[ 'size_medium' ] && $food_sizes[ 'size_large' ] ):
-								echo $food_sizes[ 'size_small' ];
-								echo '<span>|</span>';
-								echo $food_sizes[ 'size_medium' ];
-								echo '<span>|</span>';
-								echo $food_sizes[ 'size_large' ];
-							endif;
-							echo '</p>';
+					if ( $food_sizes ):
+						echo '<p>';
+						if ( $food_sizes[ 'size_small' ] && $food_sizes[ 'size_medium' ] && $food_sizes[ 'size_large' ] ):
+							echo $food_sizes[ 'size_small' ];
+							echo '<span>|</span>';
+							echo $food_sizes[ 'size_medium' ];
+							echo '<span>|</span>';
+							echo $food_sizes[ 'size_large' ];
 						endif;
+						echo '</p>';
+					endif;
 
 					$food_image = get_field( 'food_image' );
 					if ( $food_image ):
