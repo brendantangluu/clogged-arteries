@@ -70,15 +70,13 @@ if(isset($_GET['restaurants'])){
 		}
 		?>
 		<div class="site-branding">
+			<a href="<?php get_permalink('86')?>">
+				<?php echo wp_get_attachment_image( get_theme_mod( 'custom_logo' ), 'full' ); ?>
+			</a>
 			<?php
-			the_custom_logo();
 			if ( is_front_page() && is_home() ) :
 				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/home' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 				<?php
 			endif;
 			$clogged_arteries_description = get_bloginfo( 'description', 'display' );
