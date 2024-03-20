@@ -44,7 +44,7 @@ get_header();
 			if (!empty($items)) {
 				echo '<div class="filter-tabs">';
 				foreach ($items as $item) {
-					echo '<button class="tab" data-location="' . esc_attr($item->slug) . '">' . esc_html($item->name) . '</button>';
+					echo '<button class="tab" data-term="' . esc_attr($item->slug) . '">' . esc_html($item->name) . '</button>';
 				}
 				echo '</div>';
 			}
@@ -64,7 +64,7 @@ get_header();
 				}
 		?>
 
-				<article class="careers tab-class" data-location="<?php echo $data_location; ?>">
+				<article class="tab-class careers" data-term="<?php echo $data_location; ?>">
 					<h2><?php the_title(); ?></h2>
 					<p><?php the_field('role_description'); ?></p>
 					<a href="https://ca.indeed.com/q-restaurant-jobs.html?vjk=152b9f5a426d28cb" target="_blank" rel="noopener">Click here to Apply</a>
