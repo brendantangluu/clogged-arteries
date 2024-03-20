@@ -21,10 +21,14 @@ get_header();
 	<?php
 	while (have_posts()) :
 		the_post();
+		?>
+		<header class="entry-header">
+			<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+		</header>
 
-		get_template_part('template-parts/content', 'page');
-
-
+	<?php clogged_arteries_post_thumbnail(); ?>
+	
+	<?php 
 		$args = array(
 			'post_type' => 'cla-careers',
 			'posts_per_page' => -1,
@@ -59,11 +63,12 @@ get_header();
 					$data_location = 'no-location';
 				}
 	?>
-				<div class="careers" data-location="<?php echo $data_location; ?>">
+
+				<article class="careers" data-location="<?php echo $data_location; ?>">
 					<h2><?php the_title(); ?></h2>
 					<p><?php the_field('role_description'); ?></p>
 					<a href="https://ca.indeed.com/q-restaurant-jobs.html?vjk=152b9f5a426d28cb" target="_blank" rel="noopener">Click here to Apply</a>
-				</div>
+				</article>
 	<?php
 			}
 		} else {
