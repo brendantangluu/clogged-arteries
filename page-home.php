@@ -25,6 +25,30 @@ get_header();
 			<section class="hero-section">
 				<h1><?php the_field('company_name') ?></h1>
 				<p><?php the_field('tagline') ?></p>
+				
+				<!-- Output the City banner -->
+
+				<?php 
+					$args = array(
+						'post_type' => 'cla-restaurant',
+						'posts_per_page' => -1,
+					);
+				$query = new WP_Query($args);
+				if($query -> have_posts()):
+					while($query -> have_posts()):
+						$query -> the_post();
+						$restaurant_title = sanitize_title(get_the_title());
+						if($_SESSION['restaurants'] == $restaurant_title){
+							the_post_thumbnail();
+
+						}
+					endwhile;
+				endif;
+				
+				
+				
+				?>
+
 			</section>
 	<!-- Exclusive Section START -->
 			<?php
