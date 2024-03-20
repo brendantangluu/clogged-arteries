@@ -23,7 +23,8 @@ $query = new WP_Query($args);
 
 if ($query->have_posts()) :
     while ($query->have_posts()) :
-        echo '<article class="restaurant-card">';
+        echo '<article>';
+        echo '<div class="restaurant-card">';
         $query->the_post();
         if (function_exists('get_field')) :
             
@@ -57,7 +58,7 @@ if ($query->have_posts()) :
                 the_field('hours');
                 echo '</p>';
             endif;
-            echo "</article>";
+            echo "</div>";
 			// Google Map Field
 			?>
 			<div class = 'acf-map'>
@@ -71,6 +72,7 @@ if ($query->have_posts()) :
 					
 					<?php
 				endif;
+                echo '</article>';
 				?>
 			</div>
 			<?php
