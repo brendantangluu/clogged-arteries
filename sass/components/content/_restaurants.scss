@@ -1,5 +1,20 @@
 .restaurant-card{
   background-color: #8AD0EF;
-  display:flex;
-  flex-wrap: wrap;
+  margin: 2rem 0 0 0;
+  padding: 1rem;
+  
 }
+
+.restaurant-card img{
+  max-width: 0.8rem;
+  margin-right: 0.8rem;
+}
+
+.restaurant-card h2{
+  display: inline;
+}
+
+.restaurant-card p{
+  margin: 0 auto;
+}
+

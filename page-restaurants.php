@@ -25,19 +25,18 @@ if ($query->have_posts()) :
     while ($query->have_posts()) :
         echo '<div class="restaurant-card">';
         $query->the_post();
-        echo '<h2>';
-        the_title();
-        echo '</h2>';
         if (function_exists('get_field')) :
             
-			// Pinpoint Image
-            // if (get_field('pinpoint_image')) :
-            //     $pinpoint_image = get_field('pinpoint_image');
-            //     $pinpoint_image_url = $pinpoint_image['url'];
-            //     $pinpoint_image_alt = $pinpoint_image['alt'];
-            //     echo '<img src="' . esc_url($pinpoint_image_url) . '" alt="' . esc_attr($pinpoint_image_alt) . '">';
-            // endif;
-
+            if (get_field('pinpoint_image')) :
+                $pinpoint_image = get_field('pinpoint_image');
+                $pinpoint_image_url = $pinpoint_image['url'];
+                $pinpoint_image_alt = $pinpoint_image['alt'];
+                echo '<img src="' . esc_url($pinpoint_image_url) . '" alt="' . esc_attr($pinpoint_image_alt) . '">';
+            endif;
+            
+            echo '<h2>';
+            the_title();
+            echo '</h2>';
             // Address
             if (get_field('address')) :
                 echo '<p>';
