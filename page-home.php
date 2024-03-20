@@ -18,11 +18,10 @@ get_header();
 ?>
 
 <main id="primary" class="site-main">
-	<?php
-	if (function_exists("get_field")) :
-	?>
-		<section class="hero-section">
-			<article>
+	<section class="hero-section">
+			<?php
+			if (function_exists("get_field")) :
+			?>
 				<h1><?php the_field('company_name') ?></h1>
 				<p><?php the_field('tagline') ?></p>
 				<!-- Output the City banner -->
@@ -40,16 +39,14 @@ get_header();
 							the_post_thumbnail();
 						}
 					endwhile;
+					wp_reset_postdata();
 				endif;
 				?>
-			</article>
-		</section>
-		<!-- Exclusive Section START -->
+	</section>
+	<section class="exclusive-items">
 		<?php
 		if (isset($_SESSION['restaurants']) && !empty($_SESSION['restaurants'])) :
-
 			// Get all the restaurant posts in the CPT and converting into an array in order to compare the session location with the restaurant post name and see if it matches
-
 			$restaurants = get_posts(array('post_type' => 'cla-restaurant'));
 			$restaurant_data = array();
 
@@ -58,7 +55,6 @@ get_header();
 			}
 
 			if (in_array($_SESSION['restaurants'], $restaurant_data)) {
-				echo "<section class='location-exclusives'>";
 				$menu_category_slug = 'exclusive';
 				$taxonomy = 'cla-menu-categories';
 				$post_type = 'cla-menu';
@@ -93,7 +89,7 @@ get_header();
 							while ($query->have_posts()) {
 								$query->the_post();
 								$exclusives = get_field('food_image');
-		?>
+						?>
 								<article>
 									<!-- Image output code referenced from ACF Docs - https://www.advancedcustomfields.com/resources/image/ -->
 									<?php
@@ -104,33 +100,30 @@ get_header();
 									<p><?php the_field('food_description') ?></p>
 									<aside><?php the_field('food_price') ?></aside>
 								</article>
-				<?php
+						<?php
 
 							}
 							wp_reset_postdata(); // Reset the post data    
 						}
 					}
 				}
-				echo "</section>";
+			
 				?>
-	<?php
-			}
-		endif;
-	endif;
-	?>
-	<!-- Exclusive Section END -->
+		<?php
+				}
+				endif;
+			endif;
+		?>
+	</section>
 	<section class="instagram-gallery">
-		<article>
-			<?php echo do_shortcode('[instagram-feed feed=1]'); ?>
-		</article>
+		<?php echo do_shortcode('[instagram-feed feed=1]'); ?>
 	</section>
 	<section class="testimonial">
 		<article>
 		</article>
 	</section>	
 	<section class="about-us">
-		<article>
-			<?php
+		<?php
 			while (have_posts()) :
 				the_post();
 				$about = get_field('original_restaurant');
@@ -151,12 +144,10 @@ get_header();
 					endif;
 				endif;
 			endwhile; // End of the loop.
-			?>
-		</article>
+		?>
 	</section>
 	<section class="restaurant-info">
-		<article>
-			<?php
+		<?php
 			if (isset($_SESSION['restaurants']) && !empty($_SESSION['restaurants'])) :
 				$restaurants = get_posts(array('post_type' => 'cla-restaurant'));
 				$restaurant_data = array();
@@ -205,8 +196,7 @@ get_header();
 			<?php
 				endif;
 			endif;
-			?>
-		</article>
+		?>
 	</section>
 </main><!-- #main -->
 
