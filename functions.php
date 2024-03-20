@@ -200,8 +200,7 @@ add_action('init', 'start_session');
 /**
  * Enqueue external scripts and styles.
  */
-function external_scripts()
-{
+function external_scripts() {
 	wp_enqueue_script(
 		'careers-script',
 		get_template_directory_uri() . '/js/career-tabs.js',
@@ -217,6 +216,15 @@ function external_scripts()
 		_S_VERSION, 
 		true
 	);
+	
+	wp_enqueue_style(
+		'cla-googlefonts', 
+		'https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap', 
+		array(), 
+		null
+	);
+
+
 }
 add_action('wp_enqueue_scripts', 'external_scripts');
 
