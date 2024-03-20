@@ -34,7 +34,7 @@ get_header();
 		));
 		if (!empty($menuCategories)) :
 			foreach ($menuCategories as $menuCategory) :
-				echo '<button>' . ($menuCategory->name) . '</button>';
+				echo '<button class="tab" data-menu-category="' . esc_attr($menuCategory->slug) . '">' . esc_html($menuCategory->name) . '</button>';
 			endforeach;
 		endif;
 	endif;
@@ -43,7 +43,16 @@ get_header();
 	if ($query->have_posts()) :
 		while ($query->have_posts()) :
 			$query->the_post();
-			echo '<article>';
+
+			$menu_terms = get_the_terms(get_the_ID(), 'cla-menu-categories');
+			if ($menu_terms && !is_wp_error($menu_terms)) {
+				$menu_slugs = wp_list_pluck($menu_terms, 'slug');
+				$data_menu_category = esc_attr(implode(' ', $menu_slugs));
+			} else {
+				$data_menu_category = 'no-menu';
+			}
+
+			echo '<article class="cla-menu" data-menu-category="' . $data_menu_category . '">';
 			echo '<h2>' . get_the_title() . '</h2>';
 			if (function_exists('get_field')) :
 				if (get_field('food_price')) :

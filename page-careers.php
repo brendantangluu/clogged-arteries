@@ -50,6 +50,7 @@ get_header();
 		if ($careers->have_posts()) {
 			while ($careers->have_posts()) {
 				$careers->the_post();
+
 				$location_terms = get_the_terms(get_the_ID(), 'cla-location');
 				if ($location_terms && !is_wp_error($location_terms)) {
 					$location_slugs = wp_list_pluck($location_terms, 'slug');
