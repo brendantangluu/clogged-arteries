@@ -1,12 +1,9 @@
 jQuery(document).ready(function ($) {
   $(".tab").on("click", function () {
-    let filterLocation = $(this).data("location");
-    let filterMenu = $(this).data("menuCategory");
+    let filter = $(this).data("item");
 
-    $(".careers").hide();
-    $(".cla-menu").hide();
+    $(".tab-class").hide();
 
-    $('.careers[data-location*="' + filterLocation + '"]').show();
-    $('.cla-menu[data-menu-category*="' + filterMenu + '"]').show();
+    $('.tab-class[data-location*="' + filter + '"]').show();
   });
 });

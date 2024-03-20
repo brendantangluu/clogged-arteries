@@ -21,14 +21,14 @@ get_header();
 	<?php
 	while (have_posts()) :
 		the_post();
-		?>
+	?>
 		<header class="entry-header">
-			<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+			<?php the_title('<h1 class="entry-title">', '</h1>'); ?>
 		</header>
 
-	<?php clogged_arteries_post_thumbnail(); ?>
-	
-	<?php 
+		<?php clogged_arteries_post_thumbnail(); ?>
+
+		<?php
 		$args = array(
 			'post_type' => 'cla-careers',
 			'posts_per_page' => -1,
@@ -37,14 +37,14 @@ get_header();
 		);
 
 		if (taxonomy_exists('cla-location')) {
-			$locations = get_terms(array(
+			$items = get_terms(array(
 				'taxonomy' => 'cla-location',
 				'hide_empty' => false,
 			));
-			if (!empty($locations)) {
+			if (!empty($items)) {
 				echo '<div class="filter-tabs">';
-				foreach ($locations as $location) {
-					echo '<button class="tab" data-location="' . esc_attr($location->slug) . '">' . esc_html($location->name) . '</button>';
+				foreach ($items as $item) {
+					echo '<button class="tab" data-location="' . esc_attr($item->slug) . '">' . esc_html($item->name) . '</button>';
 				}
 				echo '</div>';
 			}
@@ -62,9 +62,9 @@ get_header();
 				} else {
 					$data_location = 'no-location';
 				}
-	?>
+		?>
 
-				<article class="careers" data-location="<?php echo $data_location; ?>">
+				<article class="careers tab-class" data-location="<?php echo $data_location; ?>">
 					<h2><?php the_title(); ?></h2>
 					<p><?php the_field('role_description'); ?></p>
 					<a href="https://ca.indeed.com/q-restaurant-jobs.html?vjk=152b9f5a426d28cb" target="_blank" rel="noopener">Click here to Apply</a>

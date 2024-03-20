@@ -53,10 +53,9 @@ get_header();
 			}
 
 			echo '<article class="cla-menu" data-menu-category="' . $data_menu_category . '">';
-
-			if(isset($_SESSION['restaurants'])):
+			if (isset($_SESSION['restaurants'])) :
 				$location = ucwords(str_replace('-', ' ', $_SESSION['restaurants']));
-				if (has_term('exclusive', 'cla-menu-categories') && strpos(get_the_title(), $location) === 0){
+				if (has_term('exclusive', 'cla-menu-categories') && strpos(get_the_title(), $location) === 0) {
 					echo '<h2>' . get_the_title() . '</h2>';
 					if (function_exists('get_field')) :
 						if (get_field('food_price')) :
@@ -87,7 +86,7 @@ get_header();
 						endif;
 
 					endif;
-				}else if(!has_term('exclusive','cla-menu-categories')){
+				} else if (!has_term('exclusive', 'cla-menu-categories')) {
 					echo '<h2>' . get_the_title() . '</h2>';
 					if (function_exists('get_field')) :
 						if (get_field('food_price')) :
