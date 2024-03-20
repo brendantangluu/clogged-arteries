@@ -31,6 +31,44 @@ if(isset($_GET['restaurants'])){
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'clogged-arteries' ); ?></a>
 
 	<header id="masthead" class="site-header">
+		
+		<!-- Location Switcher -->
+		<?php 
+
+		if($_SESSION['restaurants']){
+			$location = ucwords(str_replace('-', ' ', $_SESSION['restaurants']));
+			?>
+			<h2>My Location: <?php echo $location ?></h2>
+			<button id = "switch-location-btn">Switch Location</button>
+			<form id = 'location-switch-form' class = 'location-switch' action="<?php echo get_permalink('86')?>" method="get">
+				<?php
+				$args = array(
+					'post_type'         => 'cla-restaurant',
+					'posts_per_page'    => -1,
+					'order'             => 'DESC',
+					'orderby'           => 'title'
+				);
+
+				$query = new WP_Query($args);
+				if ($query->have_posts()) :
+					while ($query->have_posts()) :
+						$query->the_post();
+						$post_slug = $post->post_name;
+						?>
+						<fieldset>
+							<input type="radio" name="restaurants" value="<?php echo $post_slug ?>" id="<?php the_title() ?>">
+							<label for="<?php the_title() ?>"><?php the_title() ?></label>
+						</fieldset>
+					<?php
+					endwhile;
+					wp_reset_postdata();
+				endif;
+				?>
+				<input type="submit" value="Submit">
+			</form>
+			<?php
+		}
+		?>
 		<div class="site-branding">
 			<?php
 			the_custom_logo();
