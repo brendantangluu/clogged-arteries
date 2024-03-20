@@ -27,14 +27,14 @@ get_header();
 	);
 
 	if (taxonomy_exists('cla-menu-categories')) :
-		$menuCategories = get_terms(array(
+		$items = get_terms(array(
 			'taxonomy'		=> 'cla-menu-categories',
 			'order'			=> 'ASC',
 			'orderby'		=> 'ID'
 		));
-		if (!empty($menuCategories)) :
-			foreach ($menuCategories as $menuCategory) :
-				echo '<button class="tab" data-menu-category="' . esc_attr($menuCategory->slug) . '">' . esc_html($menuCategory->name) . '</button>';
+		if (!empty($items)) :
+			foreach ($items as $item) :
+				echo '<button class="tab" data-menu-category="' . esc_attr($item->slug) . '">' . esc_html($item->name) . '</button>';
 			endforeach;
 		endif;
 	endif;
@@ -52,10 +52,10 @@ get_header();
 				$data_menu_category = 'no-menu';
 			}
 
-			echo '<article class="cla-menu" data-menu-category="' . $data_menu_category . '">';
+			echo '<article class="cla-menu tab-class" data-menu-category="' . $data_menu_category . '">';
 			$location = ucwords(str_replace('-', ' ', $_SESSION['restaurants']));
-			
-			if (has_term('exclusive', 'cla-menu-categories') && strpos(get_the_title(), $location) === 0){
+
+			if (has_term('exclusive', 'cla-menu-categories') && strpos(get_the_title(), $location) === 0) {
 				echo '<h2>' . get_the_title() . '</h2>';
 				if (function_exists('get_field')) :
 					if (get_field('food_price')) :
@@ -86,7 +86,7 @@ get_header();
 					endif;
 
 				endif;
-			}else if(!has_term('exclusive','cla-menu-categories')){
+			} else if (!has_term('exclusive', 'cla-menu-categories')) {
 				echo '<h2>' . get_the_title() . '</h2>';
 				if (function_exists('get_field')) :
 					if (get_field('food_price')) :
