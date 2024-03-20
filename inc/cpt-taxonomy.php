@@ -47,7 +47,7 @@ function cla_register_custom_post_types()
         'hierarchical'          => true,
         'menu_position'         => 5,
         'menu_icon'             => 'dashicons-food',
-        'supports'              => array('title', 'editor', 'thumbnail'),
+        'supports'              => array('title', 'thumbnail'),
         'taxonomies'            => array('cla-menu-categories', 'cla-location'),
         
 

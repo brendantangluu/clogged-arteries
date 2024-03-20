@@ -12,7 +12,7 @@ session_start();
  *
  * @package Clogged_Arteries
  */
-get_header();	
+get_header();
 ?>
 
 
@@ -21,11 +21,10 @@ get_header();
 	<?php
 		while ( have_posts() ) :
 			the_post();
-
 			if (function_exists('get_field')) :
 				if (get_field('logo') || get_field('prompt')) : ?>
 					<img class="splash-logo" src="<?php the_field('logo') ?>" alt="This is the Clogged Arteries Logo">
-					<p><?php the_field('prompt') ?></p>
+					<h2><?php the_field('prompt') ?></h2>
 			<?php endif;
 			endif; ?>
 		
@@ -55,7 +54,6 @@ get_header();
 				?>
 				<input type="submit" value="Submit">
 			</form>
-			
 			<?php
 		endwhile;
 		?>
