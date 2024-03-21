@@ -100,7 +100,7 @@ get_header();
 										<?php endif; ?>
 										<h2><?php the_title(); ?></h2>
 										<p><?php the_field('food_description') ?></p>
-										<aside><?php the_field('food_price') ?></aside>
+										<p><?php the_field('food_price') ?></p>
 									</article>
 									<?php
 								}
