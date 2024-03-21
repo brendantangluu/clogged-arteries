@@ -12,10 +12,10 @@
  * @package Clogged_Arteries
  */
 
- get_header();
+get_header();
 
 
- $args = array(
+$args = array(
     'post_type'         => 'cla-restaurant',
     'posts_per_page'    => -1,
 );
@@ -23,59 +23,56 @@ $query = new WP_Query($args);
 
 if ($query->have_posts()) :
     while ($query->have_posts()) :
-        echo '<article>';
-        echo '<div class="restaurant-card">';
         $query->the_post();
-        if (function_exists('get_field')) :
-            
-            if (get_field('pinpoint_image')) :
-                $pinpoint_image = get_field('pinpoint_image');
-                $pinpoint_image_url = $pinpoint_image['url'];
-                $pinpoint_image_alt = $pinpoint_image['alt'];
-                echo '<img src="' . esc_url($pinpoint_image_url) . '" alt="' . esc_attr($pinpoint_image_alt) . '">';
-            endif;
-            
-            echo '<h2>';
-            the_title();
-            echo '</h2>';
-            // Address
-            if (get_field('address')) :
-                echo '<p>';
-                the_field('address');
-                echo '</p>';
-            endif;
+        echo '<article>';
+            echo '<div class="restaurant-card">';
+                $pinpoint = get_field('pinpoint_image');
+                if (function_exists('get_field')) :
+                    if (get_field('pinpoint_image')) :
+                        echo wp_get_attachment_image($pinpoint, 'large');
+                    endif;
+                    
+                    echo '<h2>';
+                    the_title();
+                    echo '</h2>';
+                    // Address
+                    if (get_field('address')) :
+                        echo '<p>';
+                        the_field('address');
+                        echo '</p>';
+                    endif;
 
-            // Phone Number
-            if (get_field('phone_number')) :
-                echo '<p>';
-                the_field('phone_number');
-                echo '</p>';
-            endif;
+                    // Phone Number
+                    if (get_field('phone_number')) :
+                        echo '<p>';
+                        the_field('phone_number');
+                        echo '</p>';
+                    endif;
 
-            // Hours
-            if (get_field('hours')) :
-                echo '<p>';
-                the_field('hours');
-                echo '</p>';
-            endif;
+                    // Hours
+                    if (get_field('hours')) :
+                        echo '<p>';
+                        the_field('hours');
+                        echo '</p>';
+                    endif;
             echo "</div>";
-			// Google Map Field
-			?>
-			<div class = 'acf-map'>
-				<?php
-				if (get_field('map')) :
-					$map = get_field('map')
-					?>
-						<div class = "marker" data-lat="<?php echo $map['lat']?>" data-lng="<?php echo $map['lng']?>">
+                // Google Map Field
+                ?>
+            <div class = 'acf-map'>
+                    <?php
+                    if (get_field('map')) :
+                        $map = get_field('map')
+                        ?>
+                            <div class = "marker" data-lat="<?php echo $map['lat']?>" data-lng="<?php echo $map['lng']?>">
 
-						</div>
-					
-					<?php
-				endif;
-                echo '</article>';
-				?>
+                            </div>
+                        
+                        <?php
+                    endif;
+                    ?>
 			</div>
 			<?php
+        echo '</article>';
 		endif;
     endwhile;
     wp_reset_postdata();

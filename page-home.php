@@ -95,9 +95,9 @@ get_header();
 									<article>
 										<!-- Image output code referenced from ACF Docs - https://www.advancedcustomfields.com/resources/image/ -->
 										<?php
-										if (!empty($exclusives)) : ?>
-											<img src="<?php echo esc_url($exclusives['url']); ?>" alt="<?php echo esc_attr($exclusives['alt']); ?>" />
-										<?php endif; ?>
+										if (!empty($exclusives)) : 
+											echo wp_get_attachment_image($exclusives, 'large');
+										endif; ?>
 										<h2><?php the_title(); ?></h2>
 										<p><?php the_field('food_description') ?></p>
 										<p><?php the_field('food_price') ?></p>
@@ -132,14 +132,11 @@ get_header();
 						if (get_field('header') and get_field('company_description') or get_field('original_restaurant')) :
 				?>
 							<h2><?php the_field('header') ?></h2>
-							<p><?php the_field('company_description') ?></p>
-
-							<!-- Image output code referenced from ACF Docs - https://www.advancedcustomfields.com/resources/image/ -->
-
+							<p><?php the_field('company_description') ?></p>;
 							<?php
-							if (!empty($about)) : ?>
-								<img src="<?php echo esc_url($about['url']); ?>" alt="<?php echo esc_attr($about['alt']); ?>" />
-							<?php endif; ?>
+							if (!empty($about)) : 
+								echo wp_get_attachment_image($about, 'large');	
+							endif; ?>
 				<?php
 						endif;
 					endif;

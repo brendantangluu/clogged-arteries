@@ -45,7 +45,8 @@ fieldset{
 }
 
 .attachment-full{
-    width: 85px;
+    width: 75px;
+    margin-left: 1rem;
 }
 
 .main-navigation{
@@ -58,14 +59,16 @@ fieldset{
     color: white;
     width: 100%;
     height: 75dvh;
-    top: 12.7rem;
+    top: 12rem;
     left: 0;
     display: flex;
+    z-index: 999;
 }
 
 .nav-menu li, 
 .nav-menu a{
     font-size: 2rem;
+    padding: 0.5rem;
 }
 
 .menu-toggle{

@@ -66,8 +66,16 @@ get_header();
 
 				<article class="tab-class careers" data-term="<?php echo $data_location; ?>">
 					<h2><?php the_title(); ?></h2>
-					<p><?php the_field('role_description'); ?></p>
-					<a href="https://ca.indeed.com/q-restaurant-jobs.html?vjk=152b9f5a426d28cb" target="_blank" rel="noopener">Click here to Apply</a>
+					<?php
+					if(function_exists('get_field')){
+						if(get_field('role_description') AND get_field('role_url')){
+							?>
+							<p><?php the_field('role_description'); ?></p>
+							<a href="<?php the_field('role_url')?>" target="_blank" rel="noopener">Click here to Apply</a>
+							<?php
+						}
+					}
+					?>
 				</article>
 	<?php
 			}

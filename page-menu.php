@@ -78,7 +78,7 @@ get_header();
 
 						$food_image = get_field('food_image');
 						if ($food_image) :
-							echo '<img src="' . esc_url($food_image['url']) . '" alt="' . esc_attr(get_the_title()) . '">';
+							echo wp_get_attachment_image($food_image, 'large');
 						endif;
 
 						if (get_field('food_description')) :
@@ -109,7 +109,7 @@ get_header();
 
 						$food_image = get_field('food_image');
 						if ($food_image) :
-							echo '<img src="' . esc_url($food_image['url']) . '" alt="' . esc_attr(get_the_title()) . '">';
+							echo wp_get_attachment_image($food_image, 'large');
 						endif;
 
 						if (get_field('food_description')) :

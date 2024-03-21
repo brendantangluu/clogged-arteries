@@ -107,3 +107,13 @@
 		flex: 1 0 50%;
 	}
 }
+
+.nav-menu li a,
+.nav-menu li a:visited{
+	color: black;
+}
+
+.nav-menu li a:hover,
+.nav-menu li a:focus{
+	color: gray;
+}
