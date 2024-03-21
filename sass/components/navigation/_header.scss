@@ -2,6 +2,73 @@ header{
     border-bottom: black 5px solid;
 }
 
-header img{
-    
+.show{
+    display: none;
+}
+
+.location-switcher{
+    color: black;
+    background-color: #8AD0EF;
+    display: flex;
+    padding: 1rem 0.5rem;
+}
+
+.location-switcher h2{
+    margin: 0;
+    margin-right: 1rem;
+    font-size: 1.2rem;
+}
+
+.switch-location-btn{
+    background-color: transparent;
+    padding: 0;
+    border: 0;
+    margin-left: 1.8rem;
+}
+
+.location-dropdown{
+    background-color: #8AD0EF;
+    width: 100%;
+    position: absolute;
+    top: 3.8rem;
+    left: 0;
+}
+
+input{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+fieldset{
+    border: 0;
+}
+
+.attachment-full{
+    width: 85px;
+}
+
+.main-navigation{
+    display: flex;
+    justify-content: space-between;
+}
+.nav-menu{
+    position: absolute;
+    background-color: #8AD0EF;
+    color: white;
+    width: 100%;
+    height: 100dvh;
+    top: 9.1rem;
+    left: 0;
+    display: flex;
+}
+
+.nav-menu li, 
+.nav-menu a{
+    font-size: 2rem;
+}
+
+.menu-toggle{
+    border: none;
+    margin-left: 10rem;
 }
