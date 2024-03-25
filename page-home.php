@@ -138,17 +138,18 @@ get_header();
 
 					if (function_exists("get_field")) :
 						if (get_field('header') and get_field('company_description') or get_field('original_restaurant')) :
-				?>
-							<h2><?php the_field('header') ?></h2>
-							<p><?php the_field('company_description') ?></p>;
+							?>
+								<h2><?php the_field('header')?></h2>
+								<p><?php the_field('company_description')?></p>
+								<?php
+									if (!empty($about)) : 
+										echo wp_get_attachment_image($about, 'large');	
+									endif; 
+								?>
 							<?php
-							if (!empty($about)) : 
-								echo wp_get_attachment_image($about, 'large');	
-							endif; ?>
-				<?php
 						endif;
 					endif;
-				endwhile; // End of the loop.
+				endwhile;
 			?>
 		</section>
 		<section class="restaurant-info">
@@ -181,13 +182,17 @@ get_header();
 										<?php
 										if ($_SESSION['restaurants'] == $restaurant_title) :
 											if (function_exists('get_field')) {
-												if (get_field('restaurant_header') and get_field('origins')) {
+												$restaurant_image = get_field('restaurant_image');
 										?>
-													<h2><?php the_title(); ?></h2>
-													<p><?php the_field('restaurant_header') ?></p>
-													<p><?php the_field('origins') ?></p>
-									<?php
-												}
+													<h2><?php the_title()?></h2>
+													<p><?php the_field('restaurant_header')?></p>
+													<p><?php the_field('origins')?></p>
+													<?php 
+													echo wp_get_attachment_image($restaurant_image, 'large');
+													?>
+													
+										<?php
+													
 											}
 										endif;
 									endwhile;
