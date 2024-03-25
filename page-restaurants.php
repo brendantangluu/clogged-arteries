@@ -14,68 +14,80 @@
 
 get_header();
 
+?>
+<main id="primary" class="site-main">
+    <?php
 
-$args = array(
-    'post_type'         => 'cla-restaurant',
-    'posts_per_page'    => -1,
-);
-$query = new WP_Query($args);
+    while(have_posts()):
+        the_post();
+        the_post_thumbnail('large'); 
 
-if ($query->have_posts()) :
-    while ($query->have_posts()) :
-        $query->the_post();
-        echo '<article>';
-            echo '<div class="restaurant-card">';
-                $pinpoint = get_field('pinpoint_image');
-                if (function_exists('get_field')) :
-                    if (get_field('pinpoint_image')) :
-                        echo wp_get_attachment_image($pinpoint, 'large');
-                    endif;
-                    
-                    echo '<h2>';
-                    the_title();
-                    echo '</h2>';
-                    // Address
-                    if (get_field('address')) :
-                        echo '<p>';
-                        the_field('address');
-                        echo '</p>';
-                    endif;
+        $args = array(
+        'post_type'         => 'cla-restaurant',
+        'posts_per_page'    => -1,
+        );
+        $query = new WP_Query($args);
 
-                    // Phone Number
-                    if (get_field('phone_number')) :
-                        echo '<p>';
-                        the_field('phone_number');
-                        echo '</p>';
-                    endif;
+        if ($query->have_posts()) :
+            while ($query->have_posts()) :
+                $query->the_post();
+                
+                echo '<article>';
+                    echo '<div class="restaurant-card">';
+                        $pinpoint = get_field('pinpoint_image');
+                        if (function_exists('get_field')) :
+                            if (get_field('pinpoint_image')) :
+                                echo wp_get_attachment_image($pinpoint, 'large');
+                            endif;
+                            
+                            echo '<h2>';
+                            the_title();
+                            echo '</h2>';
+                            // Address
+                            if (get_field('address')) :
+                                echo '<p>';
+                                the_field('address');
+                                echo '</p>';
+                            endif;
 
-                    // Hours
-                    if (get_field('hours')) :
-                        echo '<p>';
-                        the_field('hours');
-                        echo '</p>';
-                    endif;
-            echo "</div>";
-                // Google Map Field
-                ?>
-            <div class = 'acf-map'>
-                    <?php
-                    if (get_field('map')) :
-                        $map = get_field('map')
+                            // Phone Number
+                            if (get_field('phone_number')) :
+                                echo '<p>';
+                                the_field('phone_number');
+                                echo '</p>';
+                            endif;
+
+                            // Hours
+                            if (get_field('hours')) :
+                                echo '<p>';
+                                the_field('hours');
+                                echo '</p>';
+                            endif;
+                    echo "</div>";
+                        // Google Map Field
                         ?>
-                            <div class = "marker" data-lat="<?php echo $map['lat']?>" data-lng="<?php echo $map['lng']?>">
+                    <div class = 'acf-map'>
+                            <?php
+                            if (get_field('map')) :
+                                $map = get_field('map')
+                                ?>
+                                    <div class = "marker" data-lat="<?php echo $map['lat']?>" data-lng="<?php echo $map['lng']?>">
 
-                            </div>
-                        
-                        <?php
-                    endif;
-                    ?>
-			</div>
-			<?php
-        echo '</article>';
-		endif;
+                                    </div>
+                                
+                                <?php
+                            endif;
+                            ?>
+                    </div>
+                    <?php
+                echo '</article>';
+                endif;
+            endwhile;
+            wp_reset_postdata();
+        endif;
     endwhile;
-    wp_reset_postdata();
-endif;
- 
+
+    ?>
+</main><!-- #main -->
+<?php 
  get_footer();
