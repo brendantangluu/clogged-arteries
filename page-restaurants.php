@@ -15,12 +15,12 @@
 get_header();
 
 ?>
-<main id="primary" class="site-main">
+<main id="primary" class="site-main restaurant-page">
+    
     <?php
 
     while(have_posts()):
         the_post();
-        the_post_thumbnail('large'); 
 
         $args = array(
         'post_type'         => 'cla-restaurant',
@@ -32,24 +32,23 @@ get_header();
             while ($query->have_posts()) :
                 $query->the_post();
                 
-                echo '<article>';
+                echo '<article class="info-map">';
                     echo '<div class="restaurant-card">';
-                        $pinpoint = get_field('pinpoint_image');
-                        if (function_exists('get_field')) :
-                            if (get_field('pinpoint_image')) :
-                                echo wp_get_attachment_image($pinpoint, 'large');
-                            endif;
-                            
-                            echo '<h2>';
-                            the_title();
-                            echo '</h2>';
-                            // Address
-                            if (get_field('address')) :
-                                echo '<p>';
-                                the_field('address');
-                                echo '</p>';
-                            endif;
-
+                            $pinpoint = get_field('pinpoint_image');
+                            if (function_exists('get_field')) :
+                                if (get_field('pinpoint_image')) :
+                                    echo wp_get_attachment_image($pinpoint, 'large');
+                                endif;
+                                echo '<h2>';
+                                the_title();
+                                echo '</h2>';
+                                // Address
+                                if (get_field('address')) :
+                                    echo '<p>';
+                                    the_field('address');
+                                    echo '</p>';
+                                endif;
+                        
                             // Phone Number
                             if (get_field('phone_number')) :
                                 echo '<p>';
@@ -63,6 +62,7 @@ get_header();
                                 the_field('hours');
                                 echo '</p>';
                             endif;
+                         
                     echo "</div>";
                         // Google Map Field
                         ?>
@@ -88,6 +88,7 @@ get_header();
     endwhile;
 
     ?>
+
 </main><!-- #main -->
 <?php 
  get_footer();

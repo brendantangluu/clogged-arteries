@@ -4,36 +4,49 @@
   background-color: #8AD0EF;
   margin: 2rem 0 0 0;
   padding: 1rem;
-  
+  text-align: center;
 }
 
 .restaurant-card img{
-  max-width: 0.8rem;
-  margin-right: 0.8rem;
+  width: 30px;
+  height: 30px;
+  margin-right: 0.5rem;
 }
 
 .restaurant-card h2{
   display: inline;
+  margin: 0;
+  text-align: center;
+  margin-right: 2.3rem;
 }
 
 .restaurant-card p{
   margin: 0 auto;
 }
 
+
 @media (min-width: $tablet-size){
 
-  .restaurant-card{
-  margin: 3rem 0 0 0;
-  padding: 1.7rem;
+.info-map{
+  width: 45%;
+}
+
+.restaurant-card img{
+ margin-right: 1rem;
+}
+
+.restaurant-page{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.restaurant-card{
+  margin:  1;
+  padding: 1.1rem;
 }
 
 .restaurant-card h2{
-  font-size: 2rem;
-}
-
-.restaurant-card p{
-  display: inline;
-  padding: 0 1.5rem;
+  font-size: 1.5rem;
 }
 
 }
@@ -44,17 +57,14 @@
   }
 
   .restaurant-card img{
-    max-width: 1.3rem;
-    margin-right: 1rem;
-    transform: translateY(3px);
+    margin-left: 1rem;
   }
 
   .restaurant-card h2{
-    font-size: 2.5rem;
+    font-size: 1.5rem;
   }
 
   .restaurant-card p{
     font-size: 1.2rem;
-    padding: 0 2.1rem;
   }
 }
