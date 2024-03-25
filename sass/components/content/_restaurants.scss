@@ -24,7 +24,7 @@
 
   .restaurant-card{
   margin: 3rem 0 0 0;
-  padding: 2rem;
+  padding: 1.7rem;
 }
 
 .restaurant-card h2{
@@ -40,7 +40,7 @@
 
 @media (min-width: $desktop-size){
   .restaurant-card{
-    padding: 2.5rem;
+    padding: 2.1rem;
   }
 
   .restaurant-card img{
@@ -54,7 +54,7 @@
   }
 
   .restaurant-card p{
-    font-size: 1.4rem;
-    padding: 0 2.3rem;
+    font-size: 1.2rem;
+    padding: 0 2.1rem;
   }
 }
