@@ -143,7 +143,7 @@ function clogged_arteries_scripts()
 
 	wp_enqueue_style(
 		'cla-googlefonts',
-		'https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap',
+		'https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Oswald:wght@200..700&display=swap',
 		array(),
 		null
 	);
