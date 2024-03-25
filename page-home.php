@@ -48,14 +48,11 @@ get_header();
 		<section class="exclusive-items">
 			<?php
 			if (isset($_SESSION['restaurants']) && !empty($_SESSION['restaurants'])):
-				// Get all the restaurant posts in the CPT and converting into an array in order to compare the session location with the restaurant post name and see if it matches
 				$restaurants = get_posts(array('post_type' => 'cla-restaurant'));
 				$restaurant_data = array();
-
 				foreach ($restaurants as $restaurant) {
 					$restaurant_data[] = $restaurant->post_name;
 				}
-
 				if (in_array($_SESSION['restaurants'], $restaurant_data)):
 					$menu_category_slug = 'exclusive';
 					$taxonomy = 'cla-menu-categories';
@@ -86,11 +83,14 @@ get_header();
 								)
 							);
 							$query = new WP_Query($args);
-
-							if ($query->have_posts()) {
+							if ($query->have_posts()):
 								while ($query->have_posts()) {
 									$query->the_post();
-									$exclusives = get_field('food_image');
+									if(function_exists('get_field')){
+										if(get_field('food_image')){
+											$exclusives = get_field('food_image');
+										}
+									}
 									?>
 									<article>
 										<!-- Image output code referenced from ACF Docs - https://www.advancedcustomfields.com/resources/image/ -->
@@ -99,13 +99,21 @@ get_header();
 											echo wp_get_attachment_image($exclusives, 'large');
 										endif; ?>
 										<h2><?php the_title(); ?></h2>
-										<p><?php the_field('food_description') ?></p>
-										<p><?php the_field('food_price') ?></p>
+										<?php 
+										if(function_exists('get_field')):
+											if(get_field('food_description') AND get_field('food_price')):
+												?>
+												<p><?php the_field('food_description') ?></p>
+												<p><?php the_field('food_price') ?></p>
+												<?php
+											endif;
+										endif;
+										?>
 									</article>
 									<?php
 								}
 								wp_reset_postdata(); // Reset the post data    
-							}
+							endif;
 						}
 					endif;
 				

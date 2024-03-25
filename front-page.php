@@ -1,5 +1,4 @@
 <?php
-session_start();
 /**
  * The template for displaying all pages
  *
@@ -22,12 +21,16 @@ get_header();
 		while ( have_posts() ) :
 			the_post();
 			if (function_exists('get_field')) :
-				if (get_field('logo') || get_field('prompt')) : ?>
+				if (get_field('logo')) : ?>
 					<img class="splash-logo" src="<?php the_field('logo') ?>" alt="This is the Clogged Arteries Logo">
-					<h2><?php the_field('prompt') ?></h2>
-			<?php endif;
+				<?php 
+				endif;
+					if(get_field('prompt')){
+						?>
+						<h2><?php the_field('prompt') ?></h2>
+						<?php
+					}
 			endif; ?>
-		
 			<form action="<?php echo get_permalink('86') ?>" method="get">
 				<?php
 				$args = array(
@@ -44,8 +47,8 @@ get_header();
 						$post_slug = $post->post_name;
 				?>
 						<fieldset>
-							<input type="radio" name="restaurants" value="<?php echo $post_slug ?>" id="<?php the_title() ?>">
-							<label for="<?php the_title() ?>"><?php the_title() ?></label>
+							<input type="radio" name="restaurants" value="<?php echo $post_slug?>" id="<?php the_title()?>">
+							<label for="<?php the_title()?>"><?php the_title() ?></label>
 						</fieldset>
 				<?php
 					endwhile;

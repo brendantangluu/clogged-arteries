@@ -1,8 +1,8 @@
 <?php
+if(isset($_GET['restaurants'])) {
+    $_SESSION['restaurants'] = $_GET['restaurants'];
+}
 
-if(isset($_GET['restaurants'])):
-	$_SESSION['restaurants'] = $_GET['restaurants'];
-endif;
 
 /**
  * The header for our theme
@@ -31,13 +31,18 @@ endif;
 	<header id="masthead" class="site-header">
 		<div class = "location-switcher">
 			<!-- Location Switcher -->
-			<?php 
+			<?php
 			if($_SESSION['restaurants']):
 				$location = ucwords(str_replace('-', ' ', $_SESSION['restaurants']));
 				?>
 				<h2>My Location: <?php echo $location ?></h2>
 				<button id = "switch-location-btn" class= "switch-location-btn" >
-					<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M23.245 4l-11.245 14.374-11.219-14.374-.781.619 12 15.381 12-15.391-.755-.609z"/></svg>
+				<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" aria-labelledby="title desc">
+					<title id="title">Dropdown Arrow</title>
+					<desc id="desc">An arrow pointing downwards that shows a dropdown window for the location selector upon clicking.</desc>
+					<path d="M23.245 4l-11.245 14.374-11.219-14.374-.781.619 12 15.381 12-15.391-.755-.609"/>
+				</svg>
+
 				</button>
 				<form id = 'location-switch-form' class = 'location-dropdown show' action="<?php echo get_permalink('86')?>" method="get">
 					<?php
@@ -76,7 +81,11 @@ endif;
 				</a>
 			</div>
 			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
-				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z"/></svg>
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-labelledby="title desc">
+					<title id="title">Menu icon</title>
+					<desc id="desc">An icon representing a menu with three horizontal lines.</desc>
+					<path d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z"/>
+				</svg>
 			</button>
 			<?php
 			wp_nav_menu(
