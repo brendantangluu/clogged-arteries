@@ -35,14 +35,9 @@ if(isset($_GET['restaurants'])) {
 			if($_SESSION['restaurants']):
 				$location = ucwords(str_replace('-', ' ', $_SESSION['restaurants']));
 				?>
-				<h2>My Location: <?php echo $location ?></h2>
-				<button id = "switch-location-btn" class= "switch-location-btn" >
-				<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" aria-labelledby="title desc">
-					<title id="title">Dropdown Arrow</title>
-					<desc id="desc">An arrow pointing downwards that shows a dropdown window for the location selector upon clicking.</desc>
-					<path d="M23.245 4l-11.245 14.374-11.219-14.374-.781.619 12 15.381 12-15.391-.755-.609"/>
-				</svg>
-
+				<button id = "switch-location-btn" class="switch-location-btn">
+					<h2>My Location: <?php echo $location ?></h2>
+					<i class="arrow" id="location-arrow"></i>
 				</button>
 				<form id = 'location-switch-form' class = 'location-dropdown show' action="<?php echo get_permalink('86')?>" method="get">
 					<?php
@@ -75,18 +70,20 @@ if(isset($_GET['restaurants'])) {
 			?>
 		</div>
 		<nav id="site-navigation" class="main-navigation">
-			<div class="site-branding">
-				<a href="<?php echo get_permalink(86)?>">
-					<?php echo wp_get_attachment_image( get_theme_mod( 'custom_logo' ), 'full' ); ?>
-				</a>
+			<div class="nav-container-mobile">
+				<div class="site-branding">
+					<a href="<?php echo get_permalink(86)?>">
+						<?php echo wp_get_attachment_image( get_theme_mod( 'custom_logo' ), 'full' ); ?>
+					</a>
+				</div>
+				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+					<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" aria-labelledby="title desc">
+						<title id="title">Menu icon</title>
+						<desc id="desc">An icon representing a menu with three horizontal lines.</desc>
+						<path d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z"/>
+					</svg>
+				</button>
 			</div>
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
-				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-labelledby="title desc">
-					<title id="title">Menu icon</title>
-					<desc id="desc">An icon representing a menu with three horizontal lines.</desc>
-					<path d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z"/>
-				</svg>
-			</button>
 			<?php
 			wp_nav_menu(
 				array(
