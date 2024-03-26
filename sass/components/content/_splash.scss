@@ -5,11 +5,24 @@
     display: none;
 }
 
-.bg-image {
-    background-size: contain; /* Adjust as needed */
-    background-position: center; /* Adjust as needed */
+.bg-container{
+    background-color: black;
+    height: 100vh;
+    width: 100%;
+    z-index: -999999;
+    position: absolute;
 }
 
+.bg-image {
+    background-repeat: repeat;
+    background-position: center;
+    position: absolute;
+    z-index: -999;
+    height: 100vh;
+    width: 100%;
+    opacity: 0.5;
+    filter: brightness(50%);
+}
 
 .logo-container{
     width: 100%;
@@ -20,14 +33,25 @@
         }
 }
 
-.active-label{
-    color: #B30000;
-}
-
 .splash-form{
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
+    color: white;
+    padding-top: 10rem;
+
+    .splash-location-selector{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        h2{
+            font-size: 1.15rem;
+        }
+    }
 
     .location-splash{
         display: flex;
@@ -44,25 +68,49 @@
             font-weight: 700;
             text-transform: uppercase;
             font-size: 1.5rem;
-            transition: 0.3s;
+            transition: 0.25s;
             cursor: pointer;
 
             &:hover,
             &:active{
-                color: #B30000;
+                color: #ff2c23;
             }
         }
 
         .location-submit {
             text-transform: uppercase;
-            transition: 0.3s;
+            transition: 0.25s;
             cursor: pointer;
+            background-color: white;
+            color: black;
+            border: 0;
 
             &:hover,
             &:active{
-                background-color: #B30000;
-                color: white;
+                background-color: #fef9a8;
+                color: black;
             }
+        }
+    }
+}
+
+@media(min-width: $desktop_size){
+    .splash-form{
+        .splash-location-selector{
+            h2{
+                font-size: 2rem;
+            }
+        }
+        .location-splash{
+            .city-label{
+                font-size: 2rem;
+            }
+        }
+    }
+
+    .logo-container{
+        .splash-logo{
+            width: 350px;
         }
     }
 }
