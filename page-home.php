@@ -92,13 +92,13 @@ get_header();
 									}
 								}
 		?>
-								<article>
+								<article class="home-exclusives">
 									<!-- Image output code referenced from ACF Docs - https://www.advancedcustomfields.com/resources/image/ -->
+									<h2><?php the_title(); ?></h2>
 									<?php
 									if (!empty($exclusives)) :
 										echo wp_get_attachment_image($exclusives, 'large');
 									endif; ?>
-									<h2><?php the_title(); ?></h2>
 									<?php
 									if (function_exists('get_field')) :
 										if (get_field('food_description') and get_field('food_price')) :

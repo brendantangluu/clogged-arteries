@@ -1,0 +1,26 @@
+@import "abstracts/abstracts";
+
+.exclusive-items{
+    margin: 0 auto;
+}
+
+.home-exclusives{
+    padding: 1rem;
+    text-align: center;
+    background-color: aquamarine;
+}
+
+.home-exclusives img{
+    border-radius: 50%;
+    border: solid 2px white;
+}
+
+@media (min-width: 768px){
+    .home-exclusives img{
+        width: 20rem;
+    }
+
+    .exclusive-items{
+        display: flex;
+    }
+}
