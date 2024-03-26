@@ -45,18 +45,19 @@ get_header();
 		endif;
 		?>
 	</section>
-	<section>
+	<section class="exclusive-items">
 		
-		<?php
-		if(function_exists("get_field")):
-			if(get_field("exclusive_bg")):
-				?>
-		<div class="exclusive-bg-container" style="background-image: url('<?php echo get_field('exclusive_bg');?>">
-		<?php
-			endif;		
-		endif;
-		?>
+		<?php if (function_exists("get_field") && get_field("exclusive_bg")):
+			?>
+			<style>
+				.exclusive-bg-container::before {
+					background-image: url('<?php echo get_field("exclusive_bg"); ?>');
+				}
+			</style>
+		<?php endif; ?>
 
+		<div class="exclusive-bg-container">
+			
 		<?php
 		if (isset($_SESSION['restaurants']) && !empty($_SESSION['restaurants'])) :
 			$restaurants = get_posts(array('post_type' => 'cla-restaurant'));
