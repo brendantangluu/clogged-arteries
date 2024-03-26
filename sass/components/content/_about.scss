@@ -1,0 +1,57 @@
+@import "../../abstracts/variables/colors";
+@import "../../abstracts/variables/typography";
+@import "../../abstracts/variables/breakpoints";
+@import "../../abstracts/mixins/mixins";
+
+.about-wrapper {
+}
+
+.about-us {
+  display: block;
+
+  .right {
+    background-color: #222222;
+    h2 {
+      color: white;
+      margin: 0;
+      padding-top: 1.5rem;
+      font-size: clamp(1.5rem, 2vw, 2rem);
+      text-align: center;
+    }
+    p {
+      padding: 1rem;
+      color: white;
+      font-size: clamp(1rem, 1.5vw, 1.5rem);
+    }
+  }
+  img {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+  }
+}
+
+.restaurant-wrapper {
+}
+
+.restaurant-info {
+}
+
+@media screen and (min-width: $tablet-size) {
+}
+
+@media screen and (min-width: $desktop-size) {
+  .about-us {
+    display: flex;
+    flex-wrap: wrap;
+
+    .right {
+      width: 70%;
+    }
+
+    img {
+      width: 30%;
+    }
+  }
+}
