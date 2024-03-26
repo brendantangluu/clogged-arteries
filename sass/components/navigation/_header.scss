@@ -33,7 +33,7 @@ header{
     padding: 3px;
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
-    transition: 0.3s;
+    transition: 0.25s;
 }
 
 .clicked{
@@ -72,7 +72,7 @@ header{
         margin: 0;
         padding: 0;
         padding-top: 0.5rem;
-        transition: 0.3s;
+        transition: 0.25s;
         cursor: pointer;
 
 
@@ -84,7 +84,7 @@ header{
 
     .location-submit {
         text-transform: uppercase;
-        transition: 0.3s;
+        transition: 0.25s;
         cursor: pointer;
         background-color:#fef9a8;
         color: black;
