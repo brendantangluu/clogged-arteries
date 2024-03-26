@@ -45,13 +45,14 @@ function clogged_arteries_setup()
 		* Enable support for Post Thumbnails on posts and pages.
 		*
 		* @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
-		*/
+		*/	
 	add_theme_support('post-thumbnails');
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
 			'menu-1' => esc_html__('Primary', 'clogged-arteries'),
+			'footer' => esc_html__('Footer', 'clogged-arteries')
 		)
 	);
 
@@ -133,13 +134,15 @@ function clogged_arteries_scripts()
 		true
 	);
 
-	wp_enqueue_script(
-		'locationSwitcher',
-		get_template_directory_uri() . '/js/location-switcher.js',
-		array(),
-		_S_VERSION,
-		true
-	);
+	if (is_front_page() || is_page(86)) {
+        wp_enqueue_script(
+            'locationSwitcher',
+            get_template_directory_uri() . '/js/location-switcher.js',
+            array(),
+            _S_VERSION,
+            true
+        );
+    }
 
 	wp_enqueue_style(
 		'cla-googlefonts',

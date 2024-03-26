@@ -39,32 +39,50 @@ if(isset($_GET['restaurants'])) {
 					<h2>My Location: <?php echo $location ?></h2>
 					<i class="arrow" id="location-arrow"></i>
 				</button>
-				<form id = 'location-switch-form' class = 'location-dropdown show' action="<?php echo get_permalink('86')?>" method="get">
+				<div class="splash-form">
 					<?php
-					$args = array(
-						'post_type'         => 'cla-restaurant',
-						'posts_per_page'    => -1,
-						'order'             => 'DESC',
-						'orderby'           => 'title'
-					);
-	
-					$query = new WP_Query($args);
-					if ($query->have_posts()) :
-						while ($query->have_posts()) :
-							$query->the_post();
-							$post_slug = $post->post_name;
-							?>
-							<fieldset>
-								<input type="radio" name="restaurants" value="<?php echo $post_slug ?>" id="<?php the_title() ?>">
-								<label for="<?php the_title() ?>"><?php the_title() ?></label>
-							</fieldset>
+					if (function_exists('get_field')) :
+						if (get_field('logo')) : ?>
+							<div class="logo-container">
+								<img class="splash-logo" src="<?php the_field('logo') ?>" alt="This is the Clogged Arteries Logo">
+							</div>
+						<?php 
+						endif;
+							if(get_field('prompt')){
+								?>
+								<h2><?php the_field('prompt') ?></h2>
+								<?php
+							}
+					endif; ?>
+
+
+					<form id = 'location-switch-form' class = 'location-dropdown hidden' action="<?php echo get_permalink('86') ?>" method="get">
 						<?php
-						endwhile;
-						wp_reset_postdata();
-					endif;
-					?>
-					<input type="submit" value="Submit">
-				</form>
+						$args = array(
+							'post_type'         => 'cla-restaurant',
+							'posts_per_page'    => -1,
+							'order'             => 'DESC',
+							'orderby'           => 'title'
+						);
+				
+						$query = new WP_Query($args);
+						if ($query->have_posts()) :
+							while ($query->have_posts()) :
+								$query->the_post();
+								$post_slug = $post->post_name;
+						?>
+								<fieldset>
+									<input type="radio" name="restaurants" value="<?php echo $post_slug?>" id="<?php the_title()?>">
+									<label id = "location-label" class="city-label"for="<?php the_title()?>"><?php the_title() ?></label>
+								</fieldset>
+						<?php
+							endwhile;
+							wp_reset_postdata();
+						endif;
+						?>
+						<input class="location-submit" type="submit" value="Enter">
+					</form>
+				</div>
 				<?php
 			endif;
 			?>

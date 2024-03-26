@@ -12,19 +12,37 @@
 ?>
 
 	<footer id="colophon" class="site-footer">
+		<nav class="footer-navigation">
+			<?php
+				wp_nav_menu(
+					array(
+						'theme_location' => 'footer',
+						)
+					);
+			?>
 		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'clogged-arteries' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'clogged-arteries' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'clogged-arteries' ), 'clogged-arteries', '<a href="https://cloggedarteries.bcitwebdeveloper.ca/">FWD35</a>' );
-				?>
+			<div class="cla-rights">
+				<?php esc_html_e( '© Clogged Arteries ' . date("Y") . ' All Rights Reserved.', 'clogged-arteries' ); ?>
+			</div>
+			<nav class="cla-port-nav">
+				<?php esc_html_e( 'Created by: ', 'clogged-arteries' ); ?>
+				<br>
+				<a href="<?php echo esc_url( __( 'https://btech.codes', 'clogged-arteries' ) ); ?>">
+					<?php esc_html_e( 'Brendan Tang-Luu', 'clogged-arteries' ); ?>
+				</a>
+				<a href="<?php echo esc_url( __( 'https://davidzhan.ca', 'clogged-arteries' ) ); ?>">
+					<?php esc_html_e( 'David Zhan', 'clogged-arteries' ); ?>
+				</a>
+				<a href="<?php echo esc_url( __( 'https://uellemespinueva.com', 'clogged-arteries' ) ); ?>">
+					<?php esc_html_e( 'Uellem Espinueva', 'clogged-arteries' ); ?>
+				</a>
+				<a href="<?php echo esc_url( __( 'https://klausdragon.com/', 'clogged-arteries' ) ); ?>">
+					<?php esc_html_e( 'Ali Abbasi', 'clogged-arteries' ); ?>
+				</a>
+			</nav>
 		</div><!-- .site-info -->
+		</nav>
+			
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 
