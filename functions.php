@@ -138,8 +138,7 @@ function clogged_arteries_scripts()
 		'locationSwitcher',
 		get_template_directory_uri() . '/js/location-switcher.js',
 		array(),
-		_S_VERSION,
-		true
+		'1.0',
 	);
 
 	wp_enqueue_style(

@@ -72,16 +72,14 @@ if(isset($_GET['restaurants'])) {
 								$query->the_post();
 								$post_slug = $post->post_name;
 						?>
-								<fieldset>
-									<input type="radio" name="restaurants" value="<?php echo $post_slug?>" id="<?php echo $post_slug?>">
-									<label id="location-label" class="city-label" for="<?php echo $post_slug?>"><?php the_title()?></label>
-								</fieldset>
+						<button type="submit" name="restaurants" value="<?php echo $post_slug ?>" id="<?php echo $post_slug ?>" class="city-label">
+							<?php the_title(); ?>
+						</button>
 						<?php
 							endwhile;
 							wp_reset_postdata();
 						endif;
 						?>
-						<input class="location-submit" type="submit" value="Enter">
 					</form>
 				</div>
 				<?php

@@ -21,7 +21,7 @@
     height: 100vh;
     width: 100%;
     opacity: 0.5;
-    filter: brightness(50%);
+    filter: brightness(35%);
 }
 
 .logo-container{
@@ -53,6 +53,23 @@
         }
     }
 
+    .city-label{
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 2rem;
+        transition: 0.25s;
+        cursor: pointer;
+        background: none;
+        border: none;
+        color: white;
+        padding-top: 1rem;
+
+        &:hover,
+        &:active{
+            color: #fef9a8;
+        }
+    }
+
     .location-splash{
         display: flex;
         flex-wrap: wrap;
@@ -62,34 +79,6 @@
         
         input{
             margin-top: 1rem;
-        }
-
-        .city-label{
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 1.5rem;
-            transition: 0.25s;
-            cursor: pointer;
-
-            &:hover,
-            &:active{
-                color: #ff2c23;
-            }
-        }
-
-        .location-submit {
-            text-transform: uppercase;
-            transition: 0.25s;
-            cursor: pointer;
-            background-color: white;
-            color: black;
-            border: 0;
-
-            &:hover,
-            &:active{
-                background-color: #fef9a8;
-                color: black;
-            }
         }
     }
 }
