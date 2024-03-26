@@ -1,0 +1,41 @@
+@import "../../abstracts/variables/colors";
+@import "../../abstracts/variables/typography";
+@import "../../abstracts/variables/breakpoints";
+@import "../../abstracts/mixins/mixins";
+
+.hero-section {
+  position: relative;
+  margin: 0;
+  .city-banner {
+    background-color: black;
+    height: 100vh;
+    width: 100%;
+    z-index: -999999;
+  }
+
+  h1,
+  p {
+    background-color: beige;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: fit-content;
+    z-index: 1;
+  }
+
+  h1 {
+    top: 10rem;
+  }
+
+  p {
+    top: 13rem;
+  }
+
+  img {
+    display: block;
+    margin: 0;
+    filter: brightness(90%);
+    opacity: 0.5;
+  }
+}
