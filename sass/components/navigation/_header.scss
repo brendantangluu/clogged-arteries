@@ -9,7 +9,6 @@ header{
     display: none;
 }
 
-
 .location-switcher{
     color: black;
     background-color: #8AD0EF;
@@ -49,7 +48,7 @@ header{
     align-items: center;
 }
 
-.location-dropdown{
+.page-id-86 .location-dropdown{
     background-color: #8AD0EF;
     width: 190px;
     position: absolute;
@@ -57,7 +56,6 @@ header{
     z-index: 9999;
     top: 3.15rem;
     padding: 1rem;
-    transition: all .5s ease-in-out;
 
     .location-heading{
         color: black;
@@ -67,42 +65,15 @@ header{
     }
 
     .city-label{
-        text-transform: uppercase;
         color: black;
         margin: 0;
         padding: 0;
         padding-top: 0.5rem;
-        transition: 0.25s;
-        cursor: pointer;
-
-
-            &:hover,
-            &:active{
-                color: #ff2c23;
-            }
+        font-size: 1rem;
     }
 
-    .location-submit {
-        text-transform: uppercase;
-        transition: 0.25s;
-        cursor: pointer;
-        background-color:#fef9a8;
-        color: black;
-        border: 0;
-        margin-top: 1rem;
-
-        &:hover,
-        &:active{
-            background-color: black;
-            color: #fef9a8;
-        }
-    }
 }
 
-.location-dropdown .active-label,
-.location-splash .active-label{
-    color: #ff2c23;
-}
 
 fieldset{
     border: 0;
