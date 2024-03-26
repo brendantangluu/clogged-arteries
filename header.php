@@ -67,13 +67,14 @@ if(isset($_GET['restaurants'])) {
 				
 						$query = new WP_Query($args);
 						if ($query->have_posts()) :
+							echo "<h2 class='location-heading'>Switch Location</h2>";
 							while ($query->have_posts()) :
 								$query->the_post();
 								$post_slug = $post->post_name;
 						?>
 								<fieldset>
-									<input type="radio" name="restaurants" value="<?php echo $post_slug?>" id="<?php the_title()?>">
-									<label id = "location-label" class="city-label"for="<?php the_title()?>"><?php the_title() ?></label>
+									<input type="radio" name="restaurants" value="<?php echo $post_slug?>" id="<?php echo $post_slug?>">
+									<label id="location-label" class="city-label" for="<?php echo $post_slug?>"><?php the_title()?></label>
 								</fieldset>
 						<?php
 							endwhile;

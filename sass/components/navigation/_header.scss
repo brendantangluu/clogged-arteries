@@ -5,24 +5,26 @@ header{
 }
 
 .hidden{
+    height: 0;
     display: none;
 }
+
 
 .location-switcher{
     color: black;
     background-color: #8AD0EF;
     display: flex;
-    padding: 1rem 0.5rem;
     border-bottom: solid black 4px;
+    height: 50px;
+    position: relative;
+
 }
 
 .location-switcher h2{
     margin: 0;
     margin-right: 1rem;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
-
-
 
 .arrow {
     border: solid black;
@@ -31,7 +33,7 @@ header{
     padding: 3px;
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
-    transition: 0.3s;
+    transition: 0.25s;
 }
 
 .clicked{
@@ -49,11 +51,57 @@ header{
 
 .location-dropdown{
     background-color: #8AD0EF;
-    width: 100%;
+    width: 190px;
     position: absolute;
-    top: 3.8rem;
     left: 0;
     z-index: 9999;
+    top: 3.15rem;
+    padding: 1rem;
+    transition: all .5s ease-in-out;
+
+    .location-heading{
+        color: black;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        text-decoration: underline;
+    }
+
+    .city-label{
+        text-transform: uppercase;
+        color: black;
+        margin: 0;
+        padding: 0;
+        padding-top: 0.5rem;
+        transition: 0.25s;
+        cursor: pointer;
+
+
+            &:hover,
+            &:active{
+                color: #ff2c23;
+            }
+    }
+
+    .location-submit {
+        text-transform: uppercase;
+        transition: 0.25s;
+        cursor: pointer;
+        background-color:#fef9a8;
+        color: black;
+        border: 0;
+        margin-top: 1rem;
+
+        &:hover,
+        &:active{
+            background-color: black;
+            color: #fef9a8;
+        }
+    }
+}
+
+.location-dropdown .active-label,
+.location-splash .active-label{
+    color: #ff2c23;
 }
 
 fieldset{
@@ -72,6 +120,9 @@ fieldset{
     align-items: center;
     padding: 0.5rem 1rem;
 }
+.menu-navigation-header-container{
+    position: relative;
+}
 
 .nav-menu{
     position: absolute;
@@ -79,7 +130,7 @@ fieldset{
     color: white;
     width: 100%;
     height: 80dvh;
-    top: 10.08rem;
+    top: 0.31rem;
     left: 0;
     display: flex;
     z-index: 999;

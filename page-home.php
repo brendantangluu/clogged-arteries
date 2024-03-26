@@ -45,7 +45,18 @@ get_header();
 		endif;
 		?>
 	</section>
-	<section class="exclusive-items">
+	<section>
+		
+		<?php
+		if(function_exists("get_field")):
+			if(get_field("exclusive_bg")):
+				?>
+		<div class="exclusive-bg-container" style="background-image: url('<?php echo get_field('exclusive_bg');?>">
+		<?php
+			endif;		
+		endif;
+		?>
+
 		<?php
 		if (isset($_SESSION['restaurants']) && !empty($_SESSION['restaurants'])) :
 			$restaurants = get_posts(array('post_type' => 'cla-restaurant'));
@@ -80,48 +91,50 @@ get_header();
 									'field'    => 'slug',
 									'terms'    => $_SESSION['restaurants'],
 								),
-							)
-						);
-						$query = new WP_Query($args);
-						if ($query->have_posts()) :
-							while ($query->have_posts()) {
-								$query->the_post();
-								if (function_exists('get_field')) {
-									if (get_field('food_image')) {
-										$exclusives = get_field('food_image');
+								)
+							);
+							$query = new WP_Query($args);
+							if ($query->have_posts()) :
+								while ($query->have_posts()) {
+									$query->the_post();
+									if (function_exists('get_field')) {
+										if (get_field('food_image')) {
+											$exclusives = get_field('food_image');
+										}
 									}
-								}
-		?>
-								<article>
+									?>
+								<article class="home-exclusives">
 									<!-- Image output code referenced from ACF Docs - https://www.advancedcustomfields.com/resources/image/ -->
+									<h2><?php the_title(); ?></h2>
 									<?php
 									if (!empty($exclusives)) :
 										echo wp_get_attachment_image($exclusives, 'large');
 									endif; ?>
-									<h2><?php the_title(); ?></h2>
 									<?php
 									if (function_exists('get_field')) :
 										if (get_field('food_description') and get_field('food_price')) :
-									?>
+											?>
 											<p><?php the_field('food_description') ?></p>
 											<p><?php the_field('food_price') ?></p>
-									<?php
+											<?php
 										endif;
 									endif;
 									?>
 								</article>
-				<?php
+								
+								<?php
 							}
 							wp_reset_postdata(); // Reset the post data    
 						endif;
 					}
 				endif;
-
+				
 				?>
 		<?php
 			endif;
 		endif;
 		?>
+		</div>
 	</section>
 	<section class="instagram-gallery">
 		<?php echo do_shortcode('[instagram-feed feed=1]'); ?>
