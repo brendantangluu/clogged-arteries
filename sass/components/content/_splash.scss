@@ -1,4 +1,68 @@
-.page-id-90 header{
+@import "abstracts/abstracts";
+
+.page-id-90 header,
+.page-id-90 footer{
     display: none;
 }
 
+.bg-image {
+    background-size: contain; /* Adjust as needed */
+    background-position: center; /* Adjust as needed */
+}
+
+
+.logo-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+        .splash-logo{
+            width: 250px;
+        }
+}
+
+.active-label{
+    color: #B30000;
+}
+
+.splash-form{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .location-splash{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+        input{
+            margin-top: 1rem;
+        }
+
+        .city-label{
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 1.5rem;
+            transition: 0.3s;
+            cursor: pointer;
+
+            &:hover,
+            &:active{
+                color: #B30000;
+            }
+        }
+
+        .location-submit {
+            text-transform: uppercase;
+            transition: 0.3s;
+            cursor: pointer;
+
+            &:hover,
+            &:active{
+                background-color: #B30000;
+                color: white;
+            }
+        }
+    }
+}
