@@ -3,21 +3,24 @@
 @import "../../abstracts/variables/breakpoints";
 @import "../../abstracts/mixins/mixins";
 
+.about-us h2,
+.restaurant-info h2 {
+  margin: 0;
+  padding: 2rem 0 1.5rem 0;
+  font-size: clamp(1.5rem, 2vw, 2.2rem);
+  text-align: center;
+}
+
 .about-us {
   display: block;
   margin: 0;
   color: white;
+
   .right {
     background-color: #222222;
-    h2 {
-      margin: 0;
-      padding-top: 1.5rem;
-      font-size: clamp(1.5rem, 2vw, 2rem);
-      text-align: center;
-    }
     p {
       margin: 0;
-      padding: 1.5rem 2rem 2rem 2rem;
+      padding: 0 2rem 2rem 2rem;
       font-size: clamp(1rem, 1.5vw, 1.5rem);
     }
   }
@@ -34,19 +37,13 @@
   color: white;
   .left {
     background-color: #222222;
-    h2 {
-      margin: 0;
-      padding-top: 1.5rem;
-      font-size: clamp(1.5rem, 2vw, 2rem);
-      text-align: center;
-    }
     .header {
       padding: 0 2rem 0 2rem;
       font-style: italic;
     }
     .origins {
       padding: 0 2rem 2rem 2rem;
-      font-size: clamp(1rem, 1.5vw, 1.2rem);
+      font-size: clamp(1rem, 1.5vw, 1.5rem);
     }
   }
   img {
@@ -78,10 +75,11 @@
     flex-wrap: wrap;
 
     .left {
-      width: 55%;
+      width: 50%;
     }
     img {
-      width: 45%;
+      width: 50%;
+      object-fit: cover;
     }
   }
 }

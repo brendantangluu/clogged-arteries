@@ -65,15 +65,27 @@ get_header();
 				?>
 
 					<article class="tab-class" data-term="<?php echo $data_location; ?>">
-						<h2><?php the_title(); ?></h2>
 						<?php
 						if (function_exists('get_field')) {
 							if (get_field('role_description') and get_field('role_url')) {
 						?>
-								<p><?php the_field('role_description'); ?></p>
-								<div class="interactions">
-									<p>Position: Open</p>
-									<a href="<?php the_field('role_url') ?>" target="_blank" rel="noopener">Click here to Apply</a>
+
+								<?php if (get_field('headshot')) {
+									$headshot = get_field('headshot');
+									$size = 'thumbnail';
+									$thumb = $headshot['sizes'][$size];
+									$width = $headshot['sizes'][$size . '-width'];
+									$height = $headshot['sizes'][$size . '-height'];
+								} ?>
+								<?php if ($thumb) { ?>
+									<img src="<?php echo $thumb; ?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>" alt="<?php echo $headshot['alt']; ?>" />
+								<?php } ?>
+								<div class="right">
+									<p class="description"><?php the_field('role_description'); ?></p>
+									<div class="interactions">
+										<p class="status">Position: Open</p>
+										<a href="<?php the_field('role_url') ?>" target="_blank" rel="noopener">Click here to Apply</a>
+									</div>
 								</div>
 						<?php
 							}

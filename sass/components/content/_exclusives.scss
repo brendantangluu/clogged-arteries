@@ -12,19 +12,37 @@
     color: white;
 }
 
+
+
 .home-exclusives img{
     border-radius: 50%;
     border: solid 2px white;
     width: 12rem;
 }
 
-.exclusive-bg-container{
+.exclusive-bg-container {
+    position: relative;
     background-color: black;
     width: 100%;
-    z-index: -999999;
-    background-repeat: repeat;
-    background-position: center;
-    opacity: 0.5;
+    z-index: 1;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: inherit; // Inherit the background image from the parent
+        background-repeat: repeat;
+        background-position: center;
+        opacity: 0.5;
+        z-index: -1; // Ensure it stays behind the content
+    }
+}
+
+.home-exclusives, .home-exclusives * {
+    position: relative;
 }
 
 @media (min-width: 768px){
@@ -32,9 +50,8 @@
         width: 20rem;
     }
 
-    .exclusive-items{
+    .exclusive-bg-container{
         display: flex;
-        justify-content: space-between;
     }
 
     .home-exclusives{
