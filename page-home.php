@@ -154,64 +154,65 @@ get_header();
 		endwhile;
 		?>
 	</section>
-	<div class="restaurant-wrapper">
-		<section class="restaurant-info">
-			<?php
-			if (isset($_SESSION['restaurants']) && !empty($_SESSION['restaurants'])) :
-				$restaurants = get_posts(array('post_type' => 'cla-restaurant'));
-				$restaurant_data = array();
+	<section class="restaurant-info">
+		<?php
+		if (isset($_SESSION['restaurants']) && !empty($_SESSION['restaurants'])) :
+			$restaurants = get_posts(array('post_type' => 'cla-restaurant'));
+			$restaurant_data = array();
 
-				foreach ($restaurants as $restaurant) {
-					$restaurant_data[] = $restaurant->post_name;
-				}
+			foreach ($restaurants as $restaurant) {
+				$restaurant_data[] = $restaurant->post_name;
+			}
 
-				if (in_array($_SESSION['restaurants'], $restaurant_data)) :
-					$post_type = 'cla-restaurant';
-					if ($terms && !is_wp_error($terms)) :
-						foreach ($terms as $term) {
-							$args = array(
-								'post_type'      => $post_type,
-								'posts_per_page' => -1,
-								'orderby'        => 'title',
-								'order'          => 'ASC',
-							);
-							$query = new WP_Query($args);
+			if (in_array($_SESSION['restaurants'], $restaurant_data)) :
+				$post_type = 'cla-restaurant';
+				if ($terms && !is_wp_error($terms)) :
+					foreach ($terms as $term) {
+						$args = array(
+							'post_type'      => $post_type,
+							'posts_per_page' => -1,
+							'orderby'        => 'title',
+							'order'          => 'ASC',
+						);
+						$query = new WP_Query($args);
 
-							if ($query->have_posts()) :
-								while ($query->have_posts()) :
-									$query->the_post();
-									$restaurant_title = sanitize_title(get_the_title());
-			?>
-									<?php
-									if ($_SESSION['restaurants'] == $restaurant_title) :
-										if (function_exists('get_field')) {
-											$restaurant_image = get_field('restaurant_image');	
-									?>
-											<h2><?php the_title() ?></h2>
-											<p><?php the_field('restaurant_header') ?></p>
-											<p><?php the_field('origins') ?></p>
-											<?php
-											echo wp_get_attachment_image($restaurant_image, 'large');
-											?>
-
+						if ($query->have_posts()) :
+							while ($query->have_posts()) :
+								$query->the_post();
+								$restaurant_title = sanitize_title(get_the_title());
+		?>
 								<?php
-
-										}
-									endif;
-								endwhile;
+								if ($_SESSION['restaurants'] == $restaurant_title) :
+									if (function_exists('get_field')) {
+										$restaurant_image = get_field('restaurant_image');
 								?>
-					<?php
-								wp_reset_postdata(); // Reset the post data    
-							endif;
-						}
-					endif;
-					?>
-			<?php
+										<?php
+										echo wp_get_attachment_image($restaurant_image, 'large');
+										?>
+										<div class="left">
+											<h2><?php the_title() ?></h2>
+											<p class="header"><?php the_field('restaurant_header') ?></p>
+											<p class="origins"><?php the_field('origins') ?></p>
+										</div>
+
+
+							<?php
+
+									}
+								endif;
+							endwhile;
+							?>
+				<?php
+							wp_reset_postdata(); // Reset the post data    
+						endif;
+					}
 				endif;
+				?>
+		<?php
 			endif;
-			?>
-		</section>
-	</div>
+		endif;
+		?>
+	</section>
 </main><!-- #main -->
 
 <?php
