@@ -1,19 +1,35 @@
 @import "abstracts/abstracts";
 
+.exclusive-bg-container{
+    background-color: rgb(0, 0, 0);
+    width: 100%;
+    z-index: -1;
+    background-repeat: repeat;
+    background-position: center;
+    width: 100%;
+    opacity: 0.5;
+    background-size: cover;
+}
 .exclusive-items{
     margin: 0 auto;
+    opacity: 1;
 }
 
-.home-exclusives{
-    padding: 1rem;
+.home-exclusives {
     text-align: center;
-    background-color: aquamarine;
+    font-size: 0.8rem;
+    color: white;
+    opacity: 1;
 }
 
 .home-exclusives img{
     border-radius: 50%;
     border: solid 2px white;
+    width: 12rem;
 }
+
+
+
 
 @media (min-width: 768px){
     .home-exclusives img{
@@ -22,5 +38,11 @@
 
     .exclusive-items{
         display: flex;
+        justify-content: space-between;
     }
+
+    .home-exclusives p{
+        padding: 1rem;
+    }
+
 }
