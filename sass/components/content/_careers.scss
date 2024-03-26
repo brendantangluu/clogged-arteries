@@ -1,0 +1,64 @@
+@import "../../abstracts/variables/colors";
+@import "../../abstracts/variables/typography";
+@import "../../abstracts/mixins/mixins";
+
+.page-careers {
+  background-color: #222222;
+  padding: 0;
+
+  .post-thumbnail {
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .filter-tabs {
+    .tab {
+      margin-left: 0.5rem;
+      border: none;
+      background-color: transparent;
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+      &:hover {
+        color: #41b2dc;
+      }
+    }
+  }
+
+  .article-wrapper {
+    margin: 1rem 0;
+    padding-bottom: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    article {
+      margin: 1rem;
+      max-width: 40rem;
+      background-color: #ffffff;
+      color: #222222;
+
+      .interactions {
+        display: flex;
+        justify-content: space-between;
+        margin: 1rem;
+        p {
+          margin: 0;
+        }
+        a {
+          margin: 0;
+          color: #222222;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .page-careers {
+  }
+}

@@ -16,15 +16,12 @@
 get_header();
 ?>
 
-<main id="primary" class="site-main">
+<main id="primary" class="site-main page-careers">
 
 	<?php
 	while (have_posts()) :
 		the_post();
 	?>
-		<header class="entry-header">
-			<?php the_title('<h1 class="entry-title">', '</h1>'); ?>
-		</header>
 
 		<?php clogged_arteries_post_thumbnail(); ?>
 
@@ -52,42 +49,48 @@ get_header();
 
 		$careers = new WP_Query($args);
 		if ($careers->have_posts()) {
-			while ($careers->have_posts()) {
-				$careers->the_post();
-
-				$location_terms = get_the_terms(get_the_ID(), 'cla-location');
-				if ($location_terms && !is_wp_error($location_terms)) {
-					$location_slugs = wp_list_pluck($location_terms, 'slug');
-					$data_location = esc_attr(implode(' ', $location_slugs));
-				} else {
-					$data_location = 'no-location';
-				}
 		?>
+			<div class="article-wrapper">
+				<?php
+				while ($careers->have_posts()) {
+					$careers->the_post();
 
-				<article class="tab-class careers" data-term="<?php echo $data_location; ?>">
-					<h2><?php the_title(); ?></h2>
-					<?php
-					if(function_exists('get_field')){
-						if(get_field('role_description') AND get_field('role_url')){
-							?>
-							<p><?php the_field('role_description'); ?></p>
-							<a href="<?php the_field('role_url')?>" target="_blank" rel="noopener">Click here to Apply</a>
-							<?php
-						}
+					$location_terms = get_the_terms(get_the_ID(), 'cla-location');
+					if ($location_terms && !is_wp_error($location_terms)) {
+						$location_slugs = wp_list_pluck($location_terms, 'slug');
+						$data_location = esc_attr(implode(' ', $location_slugs));
+					} else {
+						$data_location = 'no-location';
 					}
-					?>
-				</article>
-	<?php
+				?>
+
+					<article class="tab-class" data-term="<?php echo $data_location; ?>">
+						<h2><?php the_title(); ?></h2>
+						<?php
+						if (function_exists('get_field')) {
+							if (get_field('role_description') and get_field('role_url')) {
+						?>
+								<p><?php the_field('role_description'); ?></p>
+								<div class="interactions">
+									<p>Position: Open</p>
+									<a href="<?php the_field('role_url') ?>" target="_blank" rel="noopener">Click here to Apply</a>
+								</div>
+						<?php
+							}
+						}
+						?>
+					</article>
+		<?php
+				}
+			} else {
+				echo 'No Careers Found';
 			}
-		} else {
-			echo 'No Careers Found';
-		}
-		wp_reset_postdata();
+			wp_reset_postdata();
 
 
-	endwhile; // End of the loop.
-	?>
-
+		endwhile; // End of the loop.
+		?>
+			</div>
 </main>
 
 <?php
