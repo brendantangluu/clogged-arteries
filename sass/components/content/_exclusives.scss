@@ -1,25 +1,15 @@
 @import "abstracts/abstracts";
 
-.exclusive-bg-container{
-    background-color: rgb(0, 0, 0);
-    width: 100%;
-    z-index: -1;
-    background-repeat: repeat;
-    background-position: center;
-    width: 100%;
-    opacity: 0.5;
-    background-size: cover;
-}
 .exclusive-items{
     margin: 0 auto;
-    opacity: 1;
 }
 
-.home-exclusives {
+.home-exclusives{
+    padding: 1rem;
     text-align: center;
+    position: relative;
     font-size: 0.8rem;
     color: white;
-    opacity: 1;
 }
 
 .home-exclusives img{
@@ -28,8 +18,14 @@
     width: 12rem;
 }
 
-
-
+.exclusive-bg-container{
+    background-color: black;
+    width: 100%;
+    z-index: -999999;
+    background-repeat: repeat;
+    background-position: center;
+    opacity: 0.5;
+}
 
 @media (min-width: 768px){
     .home-exclusives img{
@@ -41,7 +37,7 @@
         justify-content: space-between;
     }
 
-    .home-exclusives p{
+    .home-exclusives{
         padding: 1rem;
     }
 

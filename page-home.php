@@ -45,7 +45,7 @@ get_header();
 		endif;
 		?>
 	</section>
-	<section class="exclusive-items">
+	<section>
 		
 		<?php
 		if(function_exists("get_field")):
