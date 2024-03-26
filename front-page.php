@@ -40,7 +40,7 @@ get_header();
 				endif; ?>
 
 
-				<form class="location-splash" action="<?php echo get_permalink('86') ?>" method="get">
+				<form class="location-splash" action="<?php echo get_permalink('86')?>" method="get">
 					<?php
 					$args = array(
 						'post_type'         => 'cla-restaurant',
@@ -56,16 +56,17 @@ get_header();
 							$post_slug = $post->post_name;
 					?>
 							<fieldset>
-								<input type="radio" name="restaurants" value="<?php echo $post_slug?>" id="<?php the_title()?>">
-								<label id = "location-label" class="city-label"for="<?php the_title()?>"><?php the_title() ?></label>
+								<input type="radio" name="restaurants" value="<?php echo $post_slug?>" id="<?php echo $post_slug?>">
+								<label id="location-label" class="city-label" for="<?php echo $post_slug?>"><?php the_title()?></label>
 							</fieldset>
+
 
 					<?php
 						endwhile;
 						wp_reset_postdata();
 					endif;
 					?>
-					<input class="location-submit" type="submit" value="Enter">
+					<input class="location-submit" type="submit" value="Submit">
 				</form>
 			</div>
 			<?php

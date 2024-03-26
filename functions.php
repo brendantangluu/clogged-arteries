@@ -134,15 +134,13 @@ function clogged_arteries_scripts()
 		true
 	);
 
-	if (is_front_page() || is_page(86)) {
-        wp_enqueue_script(
-            'locationSwitcher',
-            get_template_directory_uri() . '/js/location-switcher.js',
-            array(),
-            _S_VERSION,
-            true
-        );
-    }
+	wp_enqueue_script(
+		'locationSwitcher',
+		get_template_directory_uri() . '/js/location-switcher.js',
+		array(),
+		_S_VERSION,
+		true
+	);
 
 	wp_enqueue_style(
 		'cla-googlefonts',

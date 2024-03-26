@@ -182,7 +182,7 @@ get_header();
 										<?php
 										if ($_SESSION['restaurants'] == $restaurant_title) :
 											if (function_exists('get_field')) {
-												$restaurant_image = get_field('restaurant_image');
+												$restaurant_image = get_field('restaurant_image');	
 										?>
 													<h2><?php the_title()?></h2>
 													<p><?php the_field('restaurant_header')?></p>
