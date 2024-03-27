@@ -25,8 +25,7 @@
 				<?php esc_html_e( '© Clogged Arteries ' . date("Y") . ' All Rights Reserved.', 'clogged-arteries' ); ?>
 			</div>
 			<nav class="cla-port-nav">
-				<?php esc_html_e( 'Created by: ', 'clogged-arteries' ); ?>
-				<br>
+				<p><?php esc_html_e( 'Created by: ', 'clogged-arteries' ); ?></p>
 				<a href="<?php echo esc_url( __( 'https://btech.codes', 'clogged-arteries' ) ); ?>">
 					<?php esc_html_e( 'Brendan Tang-Luu', 'clogged-arteries' ); ?>
 				</a>

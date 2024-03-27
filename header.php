@@ -56,7 +56,7 @@ if(isset($_GET['restaurants'])) {
 								$query->the_post();
 								$post_slug = $post->post_name;
 						?>
-						<button type="submit" name="restaurants" value="<?php echo $post_slug ?>" id="<?php echo $post_slug ?>" class="city-label">
+						<button type="submit" name="restaurants" value="<?php echo $post_slug ?>" id="<?php echo $post_slug ?>" class="city-label dropdown-city-label">
 							<?php the_title(); ?>
 						</button>
 						<?php
