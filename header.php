@@ -40,22 +40,6 @@ if(isset($_GET['restaurants'])) {
 					<i class="arrow" id="location-arrow"></i>
 				</button>
 				<div class="splash-form">
-					<?php
-					if (function_exists('get_field')) :
-						if (get_field('logo')) : ?>
-							<div class="logo-container">
-								<img class="splash-logo" src="<?php the_field('logo') ?>" alt="This is the Clogged Arteries Logo">
-							</div>
-						<?php 
-						endif;
-							if(get_field('prompt')){
-								?>
-								<h2><?php the_field('prompt') ?></h2>
-								<?php
-							}
-					endif; ?>
-
-
 					<form id = 'location-switch-form' class = 'location-dropdown hidden' action="<?php echo get_permalink('86') ?>" method="get">
 						<?php
 						$args = array(
