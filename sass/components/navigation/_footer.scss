@@ -15,7 +15,7 @@
         text-decoration: none;
 
         &:hover, &:active{
-            color: red;
+            color: #B30000;
             transition: 0.25s;
         }
     }
@@ -30,7 +30,7 @@
             align-items: center;
 
             .ig-footer a svg:hover{
-                fill: red;
+                fill: #B30000;
                 transition: 0.25s;
             }
         }
