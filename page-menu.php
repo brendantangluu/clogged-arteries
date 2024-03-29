@@ -17,7 +17,11 @@ get_header();
 ?>
 
 <main id="primary" class="site-main">
-
+<div class="menu-bg-container">
+	<div class="menu-bg-image" style="background-image: url('<?php echo get_the_post_thumbnail_url(get_the_ID(), 'large'); ?>');">
+	</div>
+</div>
+<div class="menu-page-wrapper">
 	<?php
 	$args = array(
 		'post_type' 		=> 'cla-menu',
@@ -35,7 +39,7 @@ get_header();
 		if (!empty($items)) :
 			echo '<section class="menu-filter-aside">';
 			foreach ($items as $item) :
-				echo '<button class="tab food-filter" data-term="' . esc_attr($item->slug) . '">' . esc_html($item->name) . '</button>';
+				echo '<button id="menu-button" class="tab food-filter" data-term="' . esc_attr($item->slug) . '">' . esc_html($item->name) . '</button>';
 			endforeach;
 			echo '</section>';
 		endif;
@@ -126,7 +130,7 @@ get_header();
 	endif;
 	echo '</section>';
 	?>
-
+</div>
 </main><!-- #main -->
 
 <?php

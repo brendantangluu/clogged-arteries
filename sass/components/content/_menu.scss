@@ -1,14 +1,169 @@
+@import "abstracts/abstracts";
+
+.menu-bg-container {
+    background-color: #000;
+    height: 100vh;
+    width: 100%;
+    z-index: -9999;
+    position: absolute;
+}
+
+.menu-bg-image {
+    background-repeat: repeat;
+    background-position: center;
+    position: absolute;
+    z-index: -999;
+    height: 100vh;
+    width: 100%;
+    opacity: 0.35;
+}
+
+.menu-bg-image {
+    background-repeat: repeat;
+    background-position: center;
+    position: absolute;
+    z-index: -99;
+    height: 100vh;
+    opacity: 0.35;
+}
+
+.menu-page-wrapper {
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+
+// Filter Tab
 .menu-filter-aside {
     display: flex;
     overflow-x: auto;
     overflow-y: hidden;
+    background-color: #FF3434;
+    position: sticky;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+
+.menu-filter-aside .food-filter {
+    cursor: pointer;
+}
+
+.menu-filter-aside .food-filter:hover {
+    color: #000;
 }
 
 .food-filter {
     border: none;
-
+    background-color: #FF3434;
+    color: #fff;
+    padding: 1rem 1.5rem;
+    font-weight: bold;
+    font-family: 'Oswald';
+    font-size: 1.125rem;
 }
 
-.menu-items-full .cla-menu img {
-    width: 150px;
+@media (min-width: 37.5em) {
+    .menu-filter-aside {
+        justify-content: center;
+    }
+}
+
+// Menu Items
+.menu-items-full {
+    background-color: #222;
+    color: #fff;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cla-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 26.5625rem;
+    margin-bottom: 3rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.cla-menu img {
+    width: 9.375rem;
+    height: auto;
+    border-radius: 50%;
+    border: .125rem solid #fff;
+}
+
+.food-title-price {
+    display: flex;
+    justify-content: space-between;
+}
+
+.food-title-price h2,
+.food-title-price p,
+.food-info-wrapper p {
+    margin: 0;
+}
+
+.food-title-price h2,
+.food-title-price p {
+    font-size: 1.25rem;
+    font-family: 'Oswald';
+    font-weight: bold;
+    margin: 0.75rem 0;
+}
+
+.food-title-price p {
+    margin-left: 1rem;
+}
+
+@media (min-width: 37.5em) {
+    .cla-menu {
+        flex-wrap: nowrap;
+        max-width: 31.25rem;
+    }
+
+    .cla-menu img {
+        width: 6.25rem;
+        height: auto;
+    }
+
+    .food-info-wrapper {
+        margin-left: 1.25rem;
+    }
+}
+
+@media (min-width: 53.125em) {
+    .menu-page-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .menu-filter-aside {
+        width: 20%;
+        max-width: 14.0625rem;
+        flex-direction: column;
+        height: 45vh;
+        position: relative;
+    }
+
+    .menu-filter-aside .food-filter {
+        font-size: 1.375rem;
+    }
+
+    .menu-items-full {
+        width: 70%;
+        justify-content: center;
+        height: 100vh;
+        overflow: overlay;
+    }
+
+    [data-term="exclusive"] {
+        align-items: flex-start;
+    }
 }
