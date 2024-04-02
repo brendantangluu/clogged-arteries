@@ -169,7 +169,7 @@
     }
 
     [data-term="exclusive"] {
-        align-items: flex-start;
+        align-items: center;
     }
 }
 
@@ -178,5 +178,6 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         justify-items: center;
+        align-items: flex-start;
     }
 }
