@@ -49,3 +49,27 @@
     width: 100%;
   }
 }
+
+@media(min-width: 62.5rem){
+  .trademark{
+    h1{
+      font-size: 4.5rem;
+    }
+    p{
+      font-size: 1.5rem;
+    }
+  }
+
+}
+
+@media(min-width: 75rem){
+  .trademark{
+    h1{
+      font-size: 5rem;
+    }
+    p{
+      font-size: 2rem;
+    }
+  }
+
+}
