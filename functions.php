@@ -229,3 +229,12 @@ function my_acf_google_map_api($api)
 	return $api;
 }
 add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
+
+// Remove admin menu links for non-Administrator accounts
+function fwd_remove_admin_links() {
+	if ( !current_user_can( 'manage_options' ) ) {
+		remove_menu_page( 'edit.php' );           // Remove Posts link
+		remove_menu_page( 'edit-comments.php' );  // Remove Comments link
+	}
+}
+add_action( 'admin_menu', 'fwd_remove_admin_links' );
