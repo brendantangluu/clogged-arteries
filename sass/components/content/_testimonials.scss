@@ -1,3 +1,9 @@
+.testimonial-slider {
+    background-color: #222;
+    color: #fff;
+    padding: 3rem 0;
+}
+
 .testimonial-slider h2 {
     text-align: center;
     font-size: 2rem;
@@ -5,8 +11,48 @@
 
 .swiper-slide h3 {
     text-align: center;
+    font-size: 1.375rem ;
 }
 
 .wp-block-quote cite {
     text-align: center;
+    font-weight: bold;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    background: none;
+    border: none;
+}
+
+.testimonial-slider button.swiper-button-prev::after,
+.testimonial-slider button.swiper-button-next::after {
+    font-size: 1.5rem;
+}
+
+.testimonial-slider .wp-block-quote {
+    padding: 0 1.75rem 2.5rem;
+}
+
+.testimonial-slider .wp-block-quote p {
+    margin: 0;
+    padding-bottom: 0.75rem;
+}
+
+.swiper {
+    max-width: 56.25rem;
+}
+
+.testimonial-slider .swiper-pagination-bullet {
+    background-color: #fff;
+}
+
+@media (min-width: 59.375em) {
+    .testimonial-slider .swiper-button-prev {
+        left: -0.5rem;
+    }
+    
+    .testimonial-slider .swiper-button-next {
+        right: -0.5rem;
+    }
 }
