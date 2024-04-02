@@ -103,6 +103,11 @@
     justify-content: space-between;
 }
 
+.size-price {
+    font-weight: bold;
+    font-size: 1.125rem;
+}
+
 .food-title-price h2,
 .food-title-price p,
 .food-info-wrapper p {
@@ -165,5 +170,13 @@
 
     [data-term="exclusive"] {
         align-items: flex-start;
+    }
+}
+
+@media (min-width: 75em) {
+    .menu-items-full {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
     }
 }

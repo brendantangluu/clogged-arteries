@@ -86,7 +86,7 @@ get_header();
 
 							if ($food_sizes) :
 								if ($food_sizes['size_small'] && $food_sizes['size_medium'] && $food_sizes['size_large']) :
-									echo '<p>S: '. $food_sizes['size_small'] .' | M: '. $food_sizes['size_medium'] .' | L: '. $food_sizes['size_large'] .'</p>';
+									echo '<p class="size-price">S: '. $food_sizes['size_small'] .' | M: '. $food_sizes['size_medium'] .' | L: '. $food_sizes['size_large'] .'</p>';
 								endif;
 							endif;
 						echo '</div>';
@@ -116,7 +116,7 @@ get_header();
 
 							if ($food_sizes) :
 								if ($food_sizes['size_small'] && $food_sizes['size_medium'] && $food_sizes['size_large']) :
-									echo '<p>S: '. $food_sizes['size_small'] .' | M: '. $food_sizes['size_medium'] .' | L: '. $food_sizes['size_large'] .'</p>';
+									echo '<p class="size-price">S: '. $food_sizes['size_small'] .' | M: '. $food_sizes['size_medium'] .' | L: '. $food_sizes['size_large'] .'</p>';
 								endif;
 							endif;
 						echo '</div>';

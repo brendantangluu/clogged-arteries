@@ -148,10 +148,41 @@ get_header();
 	<section class="instagram-gallery">
 		<?php echo do_shortcode('[instagram-feed feed=1]'); ?>
 	</section>
-	<section class="testimonial">
-		<article>
-		</article>
+
+	<section class="testimonial-slider">
+		<h2>Testimonials</h2>
+		<?php
+		$args = array(
+			'post_type'			=> 'cla-testimonial',
+			'posts_per_page'	=> -1
+		);
+		$query = new WP_Query( $args );
+		if ( $query -> have_posts() ):
+			?>
+			<div class="swiper">
+				<div class="swiper-wrapper">
+					<?php
+					while ( $query -> have_posts() ):
+						$query -> the_post();
+						?>
+						<article class="swiper-slide">
+							<h3><?php the_title(); ?></h3>
+							<?php the_content(); ?>
+						</article>
+						<?php
+					endwhile;
+					wp_reset_postdata();
+					?>
+				</div>
+				<div class="swiper-pagination"></div>
+				<button class="swiper-button-prev"></button>
+				<button class="swiper-button-next"></button>
+			</div>
+			<?php
+		endif;
+		?>
 	</section>
+	
 	<section class="about-us">
 		<?php
 		while (have_posts()) :
