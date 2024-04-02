@@ -4,11 +4,6 @@
     padding: 3rem 0;
 }
 
-.testimonial-slider h2 {
-    text-align: center;
-    font-size: 2rem;
-}
-
 .swiper-slide h3 {
     text-align: center;
     font-size: 1.375rem ;
@@ -39,6 +34,10 @@
     padding-bottom: 0.75rem;
 }
 
+.testimonial-slider .wp-block-quote cite {
+    display: block;
+}
+
 .swiper {
     max-width: 56.25rem;
 }
@@ -54,11 +53,6 @@
     
     .testimonial-slider .swiper-button-next {
         right: -0.5rem;
-    }
-
-    .testimonial-slider h2 {
-        font-size: 2.5rem;
-        margin-bottom: 2rem;
     }
 
     .swiper-slide h3 {

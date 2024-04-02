@@ -146,7 +146,6 @@ get_header();
 		<?php echo do_shortcode('[instagram-feed feed=1]'); ?>
 	</section>
 	<section class="testimonial-slider">
-		<h2>Testimonials</h2>
 		<?php
 		$args = array(
 			'post_type'			=> 'cla-testimonial',
