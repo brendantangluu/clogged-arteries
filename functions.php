@@ -91,6 +91,7 @@ function clogged_arteries_setup()
 	);
 }
 add_action('after_setup_theme', 'clogged_arteries_setup');
+add_filter('use_block_editor_for_post', '__return_false');
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -240,3 +241,4 @@ function fwd_remove_admin_links() {
 add_action( 'admin_menu', 'fwd_remove_admin_links' );
 
 
+// Disable Block Editor
