@@ -16,18 +16,14 @@ get_header();
 
 ?>
 <main id="primary" class="site-main restaurant-page">
-    
     <?php
-
     while(have_posts()):
         the_post();
-
         $args = array(
         'post_type'         => 'cla-restaurant',
         'posts_per_page'    => -1,
         );
         $query = new WP_Query($args);
-
         if ($query->have_posts()) :
             while ($query->have_posts()) :
                 $query->the_post();
@@ -48,21 +44,18 @@ get_header();
                                     the_field('address');
                                     echo '</p>';
                                 endif;
-                        
                             // Phone Number
                             if (get_field('phone_number')) :
                                 echo '<p>';
                                 the_field('phone_number');
                                 echo '</p>';
                             endif;
-
                             // Hours
                             if (get_field('hours')) :
                                 echo '<p>';
                                 the_field('hours');
                                 echo '</p>';
-                            endif;
-                         
+                            endif;                       
                     echo "</div>";
                         // Google Map Field
                         ?>
@@ -72,9 +65,7 @@ get_header();
                                 $map = get_field('map')
                                 ?>
                                     <div class = "marker" data-lat="<?php echo $map['lat']?>" data-lng="<?php echo $map['lng']?>">
-
                                     </div>
-                                
                                 <?php
                             endif;
                             ?>
@@ -86,7 +77,6 @@ get_header();
             wp_reset_postdata();
         endif;
     endwhile;
-
     ?>
 
 </main><!-- #main -->

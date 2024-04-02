@@ -110,7 +110,7 @@ get_header();
 											$exclusives = get_field('food_image');
 										}
 									}
-			?>
+								?>
 									<article class="home-exclusives">
 										<!-- Image output code referenced from ACF Docs - https://www.advancedcustomfields.com/resources/image/ -->
 										<h2 class="exclusive-title"><?php the_title(); ?></h2>
@@ -129,14 +129,12 @@ get_header();
 										endif;
 										?>
 									</article>
-
 					<?php
 								}
 								wp_reset_postdata(); // Reset the post data    
 							endif;
 						}
 					endif;
-
 					?>
 			<?php
 				endif;

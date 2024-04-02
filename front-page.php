@@ -53,7 +53,6 @@ get_header();
 							'order'             => 'DESC',
 							'orderby'           => 'title'
 						);
-				
 						$query = new WP_Query($args);
 						if ($query->have_posts()) :
 							while ($query->have_posts()) :

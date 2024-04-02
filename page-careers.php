@@ -17,14 +17,11 @@ get_header();
 ?>
 
 <main id="primary" class="site-main page-careers">
-
 	<?php
 	while (have_posts()) :
 		the_post();
 	?>
-
 		<?php clogged_arteries_post_thumbnail(); ?>
-
 		<?php
 		$args = array(
 			'post_type' => 'cla-careers',
@@ -32,7 +29,6 @@ get_header();
 			'orderby' => 'date',
 			'order' => 'ASC',
 		);
-
 		if (taxonomy_exists('cla-location')) {
 			$items = get_terms(array(
 				'taxonomy' => 'cla-location',
@@ -46,7 +42,6 @@ get_header();
 				echo '</div>';
 			}
 		}
-
 		$careers = new WP_Query($args);
 		if ($careers->have_posts()) {
 		?>
@@ -63,13 +58,11 @@ get_header();
 						$data_location = 'no-location';
 					}
 				?>
-
 					<article class="tab-class" data-term="<?php echo $data_location; ?>">
 						<?php
 						if (function_exists('get_field')) {
 							if (get_field('role_description') and get_field('role_url')) {
 						?>
-
 								<?php if (get_field('headshot')) {
 									$headshot = get_field('headshot');
 									$size = 'thumbnail';
@@ -98,8 +91,6 @@ get_header();
 				echo 'No Careers Found';
 			}
 			wp_reset_postdata();
-
-
 		endwhile; // End of the loop.
 		?>
 			</div>
