@@ -31,6 +31,7 @@ get_header();
                 echo '<article class="info-map">';
                     echo '<div class="restaurant-card">';
                             $pinpoint = get_field('pinpoint_image');
+                            $ig       = get_field('instagram_logo');
                             if (function_exists('get_field')) :
                                 if (get_field('pinpoint_image')) :
                                     echo wp_get_attachment_image($pinpoint, 'large');
@@ -55,7 +56,17 @@ get_header();
                                 echo '<p>';
                                 the_field('hours');
                                 echo '</p>';
-                            endif;                       
+                            endif;
+                            // Instagram Logo
+                            if (get_field('instagram_logo') AND get_field('instagram_link')) :
+                                ?>
+                                <a href="<?php the_field('instagram_link')?>">
+                                <?php
+                                echo wp_get_attachment_image($ig, 'large');
+                                ?>
+                                </a>
+                                <?php
+                            endif;
                     echo "</div>";
                         // Google Map Field
                         ?>
