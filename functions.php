@@ -116,7 +116,7 @@ add_action('after_setup_theme', 'clogged_arteries_content_width', 0);
  */
 function clogged_arteries_scripts()
 {
-	wp_enqueue_script('googleMap', '//maps.googleapis.com/maps/api/js?key=AIzaSyD8KAvyVe1stczbdQpFAeDxud3pTmblB8I', array(), _S_VERSION, true);
+	wp_enqueue_script('googleMap', '//maps.googleapis.com/maps/api/js?key=AIzaSyD8KAvyVe1stczbdQpFAeDxud3pTmblB8I&loading=async', array(), _S_VERSION, true);
 
 	wp_enqueue_script('googleMapCustomJs', get_template_directory_uri() . '/js/map.js', array('googleMap'), _S_VERSION, true);
 
