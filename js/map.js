@@ -5,7 +5,7 @@ function initMap(el) {
     // Create generic map.
     var mapArgs = {
         zoom: el.dataset.zoom || 16,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
     };
     var map = new google.maps.Map(el, mapArgs);
 
