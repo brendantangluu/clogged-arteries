@@ -1,8 +1,15 @@
 @import "abstracts/abstracts";
+// .restaurant-page{
+//   background-color: #c1c1c1;
+// }
+.info-map{
+  border: 1px solid black;
+  padding: 0rem;
+  margin: 2rem 0;
+}
 
 .restaurant-card{
   background-color: #8AD0EF;
-  margin: 2rem 0 0 0;
   padding: 1rem;
   text-align: center;
 }
@@ -32,7 +39,7 @@
 }
 
 .info-map:nth-of-type(2) {
-  padding-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 
 
