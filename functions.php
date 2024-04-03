@@ -91,7 +91,7 @@ function clogged_arteries_setup()
 	);
 }
 add_action('after_setup_theme', 'clogged_arteries_setup');
-add_filter('use_block_editor_for_post', '__return_false');
+	add_filter('use_block_editor_for_post', '__return_false');
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -233,7 +233,7 @@ add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
 
 // Remove admin menu links for non-Administrator accounts
 function fwd_remove_admin_links() {
-	if ( !current_user_can( 'manage_options' ) OR current_user_can('manage_options')) {
+	if ( !current_user_can( 'manage_options' )) {
 		remove_menu_page( 'edit.php' );           // Remove Posts link
 		remove_menu_page( 'edit-comments.php' );  // Remove Comments link
 	}
