@@ -27,7 +27,6 @@ get_header();
         if ($query->have_posts()) :
             while ($query->have_posts()) :
                 $query->the_post();
-                
                 echo '<article class="info-map">';
                     echo '<div class="restaurant-card">';
                             $pinpoint = get_field('pinpoint_image');
@@ -39,25 +38,21 @@ get_header();
                                 echo '<h2>';
                                 the_title();
                                 echo '</h2>';
-                                // Address
                                 if (get_field('address')) :
                                     echo '<p>';
                                     the_field('address');
                                     echo '</p>';
                                 endif;
-                            // Phone Number
                             if (get_field('phone_number')) :
                                 echo '<p>';
                                 the_field('phone_number');
                                 echo '</p>';
                             endif;
-                            // Hours
                             if (get_field('hours')) :
                                 echo '<p>';
                                 the_field('hours');
                                 echo '</p>';
                             endif;
-                            // Instagram Logo
                             if (get_field('instagram_logo') AND get_field('instagram_link')) :
                                 ?>
                                 <a href="<?php the_field('instagram_link')?>">
@@ -68,7 +63,6 @@ get_header();
                                 <?php
                             endif;
                     echo "</div>";
-                        // Google Map Field
                         ?>
                     <div class = 'acf-map'>
                             <?php

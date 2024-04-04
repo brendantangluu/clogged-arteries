@@ -20,7 +20,8 @@ if(isset($_GET['restaurants'])) {
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="">
+	<meta name="description" content="Discover a delicious twist on modern junk food at Clogged Arteries restaurant – where every bite is an irresistible temptation you won't want to resist.">
+	<meta name="theme-color" content="#fff">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 	<?php wp_head(); ?>
 </head>

@@ -76,7 +76,7 @@ get_header();
 	<?php
 	?>
 
-</main><!-- #main -->
+</main>
 
 <?php
 get_footer();

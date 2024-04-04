@@ -26,7 +26,6 @@ get_header();
 					<h1><?php the_field('company_name') ?></h1>
 					<p><?php the_field('tagline') ?></p>
 				</div>
-				<!-- Output the City banner -->
 				<?php
 				$args = array(
 					'post_type' => 'cla-restaurant',
@@ -54,7 +53,6 @@ get_header();
 		?>
 	</section>
 	<section class="exclusive-items">
-
 		<?php if (function_exists("get_field") && get_field("exclusive_bg")) :
 		?>
 			<style>
@@ -63,7 +61,6 @@ get_header();
 				}
 			</style>
 		<?php endif; ?>
-
 		<div class="exclusive-bg-container">
 			<?php
 			if (isset($_SESSION['restaurants']) && !empty($_SESSION['restaurants'])) :
@@ -210,7 +207,6 @@ get_header();
 			foreach ($restaurants as $restaurant) {
 				$restaurant_data[] = $restaurant->post_name;
 			}
-
 			if (in_array($_SESSION['restaurants'], $restaurant_data)) :
 				$post_type = 'cla-restaurant';
 				if ($terms && !is_wp_error($terms)) :
@@ -222,7 +218,6 @@ get_header();
 							'order'          => 'ASC',
 						);
 						$query = new WP_Query($args);
-
 						if ($query->have_posts()) :
 							while ($query->have_posts()) :
 								$query->the_post();
@@ -241,10 +236,7 @@ get_header();
 											<p class="header"><?php the_field('restaurant_header') ?></p>
 											<p class="origins"><?php the_field('origins') ?></p>
 										</div>
-
-
 							<?php
-
 									}
 								endif;
 							endwhile;

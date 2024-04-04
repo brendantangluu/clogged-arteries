@@ -125,7 +125,7 @@ get_header();
 		echo '</section>';
 		?>
 	</div>
-</main><!-- #main -->
+</main>
 
 <?php
 get_footer();
