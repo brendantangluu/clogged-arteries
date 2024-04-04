@@ -34,12 +34,15 @@
 }
 
 .splash-form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
     color: white;
-    min-height: 100vh;
 
     .splash-location-selector{
         display: flex;
