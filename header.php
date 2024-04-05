@@ -41,7 +41,7 @@ if(isset($_GET['restaurants'])) {
 					<h2>My Location: <?php echo $location ?></h2>
 					<i class="arrow" id="location-arrow"></i>
 				</button>
-				<div class="splash-form">
+				<div class="splash-form header-location">
 					<form id = 'location-switch-form' class = 'location-dropdown hidden' action="<?php echo get_permalink('86') ?>" method="get">
 						<?php
 						$args = array(

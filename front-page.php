@@ -24,7 +24,7 @@ get_header();
 				<div class="bg-image" style="background-image: url('<?php echo get_the_post_thumbnail_url(get_the_ID(), 'large'); ?>');">
 				</div>
 			</div>
-			<section class="splash-form">
+			<section class="splash-form splash-location">
 				<article class="logo">
 					<?php
 					if (function_exists('get_field')) :
