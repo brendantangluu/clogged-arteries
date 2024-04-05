@@ -241,8 +241,22 @@ function fwd_remove_admin_links() {
 add_action( 'admin_menu', 'fwd_remove_admin_links' );
 
 
-// Disable Block Editor
+// Add Dashboard Widget to display Client Tutorial
+function wpdocs_add_dashboard_widgets(){
+    wp_add_dashboard_widget("client_tutorial", "WordPress Navigation Tutorial", "add_client_tutorial_widget");
+}
+add_action("wp_dashboard_setup","wpdocs_add_dashboard_widgets");
 
+function add_client_tutorial_widget(){
+    echo "<p>WordPress Navigation Tutorial</p>";
+    echo "<a href='https://cloggedarteries.bcitwebdeveloper.ca/wp-content/uploads/2024/04/client-tutorial-1_compressed.pdf'>Link to PDF Tutorial</a>";
+}
+
+function remove_dashboard_widgets() {
+    remove_meta_box("dashboard_primary", "dashboard", "side");
+    // Remove the primary dashboard widget
+}
+add_action("wp_dashboard_setup", "remove_dashboard_widgets");
 
 
 // Lower Yoast SEO Metabox location
